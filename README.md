@@ -1,96 +1,89 @@
-# Grok Imagine Cinematic Studio v3.1
+# Grok Imagine Cinematic Studio v3.2
 
-<p align="center">
-  <img src="assets/banner.jpg" alt="Grok Imagine Cinematic Studio v3.1" width="100%">
-</p>
+## What's New in v3.2 (May 2026)
 
-<p align="center">
-  <a href="https://github.com/FineComputer14451/grok-imagine-cinematic-studio/stargazers"><img src="https://img.shields.io/github/stars/FineComputer14451/grok-imagine-cinematic-studio?style=social" alt="GitHub Stars"></a>
-  <a href="https://github.com/FineComputer14451/grok-imagine-cinematic-studio/blob/main/LICENSE"><img src="https://img.shields.io/github/license/FineComputer14451/grok-imagine-cinematic-studio" alt="License"></a>
-</p>
+**Major Release** — The biggest leap yet in cinematic consistency and long-form capability.
 
-**The most advanced multi-agent cinematic production system for Grok 4.3 Beta (May 2026)**
+### 🔥 Headline Features
 
-Transform any story seed into emotionally powerful, production-ready 24–30s (or longer) cinematic videos with perfect consistency, quota efficiency, and final QA sign-off.
+| Feature | Benefit |
+|--------|---------|
+| **Character Consistency Engine v2.0** | Dramatically reduced character drift across clips. New **Character DNA Bible** + **Character Drift Score** (0–10) |
+| **Native Sequence Mode** | Built-in multi-clip generation with automatic stitching instructions. Go from 8-second clips to full 60–120+ second sequences |
+| **Reference Image Management Layer** | Clear handling of Primary Character, Style, and Mood references with proper weighting |
+| **One-Click Execution Commands** | `EXECUTE FIRST CLIP`, `START FULL SEQUENCE`, `GENERATE ALL REFERENCE IMAGES` — ready to copy-paste |
+| **Director Signature System** | Activate cinematic voices (Villeneuve, Deakins, Wong Kar-wai, etc.) that influence the entire production |
+| **Quality Assurance Guardian v3.2** | Now 12-point review including Character Drift Score and Sequence Feasibility |
 
-## ✨ Key Features
+### New Files (v3.2)
 
-- **Quality Assurance Guardian** — Final 10-point review + Go/No-Go before any generation
-- **13 Specialized Agents** — Full professional film crew (Director, DoP, Emotion, Sound, Continuity, etc.)
-- **Studio State Protocol** — Shared memory across all agents for perfect consistency
-- **Self-Evaluation Layer** — Every agent scores its own output (1–10)
-- **Mandatory QA Gate** — Nothing is generated without final approval
-- **Prompt Optimizer + Micro-Expression Library** — Maximum emotional depth and motion quality
-- **Seamless Long-Form Extensions** — Momentum Vector + LAST_FRAME_RECAP for 60s+ videos
+- `MASTER_PROMPT_v3.2.md` — Full powerful version
+- `MASTER_PROMPT_HYBRID_MODE_v3.2.md` — **Recommended for most users** (flexible control)
+- `MASTER_PROMPT_AGENT_MODE_v3.2.md` — Strict command-driven mode
+- `CHANGELOG_v3.2.md` — Full release notes
 
-## 🚀 What's New in v3.1
+---
 
-- New **Quality Assurance Guardian v3.0** — Final gatekeeper with 10-point Full Bible Review
-- **Studio State Protocol v3.0** — Live shared state across all agents
-- **Self-Evaluation Layer** on every output
-- **Mandatory QA Gate** before any generation
-- Improved **Prompt Optimizer**, **Beat-Synced Audio Arc**, and **Momentum Vector** support
+## Quick Start (v3.2)
 
-## 📁 Repository Structure
+### Option 1: Recommended (Hybrid Mode)
 
-```
-Grok_Imagine_Cinematic_Studio_v3.1/
-├── README.md
-├── MASTER_PROMPT_v3.1.md          # Complete master system prompt (copy-paste ready)
-├── LICENSE
-├── .gitignore
-├── CONTRIBUTING.md
-├── CHANGELOG.md
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTORS.md
-├── Example_Production_Bible_Example.md
-└── agents/ (13 specialized agents)
-```
+1. Copy the entire content of **`MASTER_PROMPT_HYBRID_MODE_v3.2.md`**
+2. Paste it into Grok
+3. Type: **`Activate Grok Imagine Cinematic Studio v3.2`**
+4. Choose your workflow:
+   - **A** = Full Production Bible
+   - **B** = Step-by-step control
+   - Or just describe your vision
 
-## 🚀 Quick Start
+### Option 2: Full Power Mode
 
-1. Copy the entire content of `MASTER_PROMPT_v3.1.md` into Grok.
-2. Say: **"Activate Grok Imagine Cinematic Studio v3.1"**
-3. Share any cinematic vision, story seed, or even one sentence.
-4. Receive a complete **Production Bible v3.1** with full QA review and Go/No-Go decision.
+1. Copy **`MASTER_PROMPT_v3.2.md`**
+2. Paste into Grok
+3. Type: **`Activate Grok Imagine Cinematic Studio v3.2`**
+4. Share your cinematic vision
 
-## 🎯 Choosing Your Prompt Mode
+### Option 3: Maximum Control (Agent Mode)
 
-We provide **three optimized versions** of the Master Prompt depending on your workflow:
+1. Copy **`MASTER_PROMPT_AGENT_MODE_v3.2.md`**
+2. Use commands like:
+   - `START NEW PROJECT`
+   - `DEFINE CHARACTER DNA`
+   - `ACTIVATE DOP`
+   - `RUN QA REVIEW`
 
-| Mode              | Best For                              | Style                  | When to Use |
-|-------------------|---------------------------------------|------------------------|-------------|
-| **Full Master**   | Complete cinematic productions        | Narrative & detailed   | You want a full Production Bible in one go |
-| **Hybrid Mode**   | **Most users** (Recommended)          | Flexible + structured  | You want to switch between full Bibles and step-by-step control |
-| **Agent Mode**    | Fast iteration & precise control      | Strict & command-based | You prefer activating agents one by one |
+---
 
-**Recommendation**: Start with **Hybrid Mode** — it gives you the best balance of power and flexibility.
+## Key Improvements in v3.2
 
-All three versions are included in this repository:
-- `MASTER_PROMPT_v3.1.md`
-- `MASTER_PROMPT_HYBRID_MODE_v3.1.md`
-- `MASTER_PROMPT_AGENT_MODE_v3.1.md`
+- **Much stronger character consistency** across multiple clips
+- **True long-form support** via Sequence Mode
+- **Better reference image handling** (especially useful when uploading character sheets)
+- **Faster iteration** with One-Click Commands
+- **Higher quality gate** with expanded QA review
 
-## 🛠️ How It Works
+---
 
-The studio operates as a professional film production team:
+## Recommended Workflow (v3.2)
 
-- **Studio Director** — Visionary leader & orchestrator
-- **Mega Production Architect** — Creates all bibles, storyboards & audio scripts
-- **Imagine Prompt Master** — Crafts perfect Grok Imagine prompts + Prompt Optimizer
-- **Quality Assurance Guardian** — Final 10-point review + Go/No-Go before generation
-- + 9 specialist agents for emotion, sound, cinematography, continuity, quota, etc.
+1. Start with **Hybrid Mode**
+2. Define **Character DNA** early (this is the #1 new feature)
+3. Use **Sequence Mode** when you want anything longer than 30 seconds
+4. Always let the **Quality Assurance Guardian** run before generating
 
-All agents follow strict protocols: **6/8/10s clips only**, **480p primary**, smooth cinematic camera movement, mandatory `[VARIABLE]` references, and maximum seam invisibility.
+---
 
-## 🎬 See It In Action
+**Pro Tip**: The new **Character Drift Score** is your best friend. If it’s above 3, revise before generating.
 
-Check out the complete **[Example Production Bible](Example_Production_Bible_Example.md)** — a full 24-second neo-noir scene with QA sign-off.
+---
 
-## 📋 Requirements
+This update brings Grok Imagine Cinematic Studio to a new level of professional reliability for cinematic video production.
 
-- Grok 4.3 Beta (or newer) with image/video generation access
-- Basic understanding of prompt engineering (helpful but not required)
+**Ready to create something beautiful.** 🎥
+
+---
+
+*Maintained by the community • Powered by Grok 4.3 Beta*- Basic understanding of prompt engineering (helpful but not required)
 
 ## 🗺️ Roadmap
 
