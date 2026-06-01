@@ -2,9 +2,6 @@
   <img src="assets/banner.jpg" alt="Grok Imagine Cinematic Studio Banner" width="100%">
 </p>
 
-<p align="center">
-  <img src="assets/logo.jpg" alt="Grok Imagine Cinematic Studio Logo" width="420">
-</p>
 
 # 🎬 Grok Imagine Cinematic Studio v3.5
 
