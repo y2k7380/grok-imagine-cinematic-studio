@@ -1,0 +1,1 @@
+The full cleaned REPOSITORY_STRUCTURE.md from our draft (see local file for complete content)
