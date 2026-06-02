@@ -228,23 +228,40 @@ def create_bible(
     genre: str = typer.Option("Cinematic", "--genre", "-g"),
     output: str = typer.Option("production_bible.json", "--output", "-o")
 ):
-    """Generate a more complete Production Bible"""
+    """Generate a rich, structured Production Bible"""
     state = load_project_state()
     
     bible = {
-        "title": title,
+        "project_title": title,
         "genre": genre,
-        "created": datetime.now().isoformat(),
-        "version": "3.5.1",
-        "studio": "Grok Imagine Cinematic Studio v3.5",
+        "director_signature": "Cinematic excellence",
+        "target_duration_seconds": 60,
+        "complexity": "Medium",
+        "total_agents": 22,
+        "role_cards_source": str(AGENTS_DIR) if AGENTS_DIR.exists() else "Not found",
         "locked_variables": {
             "PROJECT_TITLE": title,
             "GENRE": genre,
-            "DIRECTOR_SIGNATURE": "Cinematic excellence"
+            "DIRECTOR_SIGNATURE": "Cinematic excellence",
+            "DURATION": "60s"
         },
-        "agents_active": 22,
+        "key_agents_involved": [
+            "Mega Production Architect",
+            "Identity Lock Specialist",
+            "Director of Photography",
+            "Performance & Emotion Director",
+            "Cinematic Sequence Extender",
+            "Quality Assurance Guardian"
+        ],
+        "recommended_phases": [
+            "Pre-Production (Bible + Character DNA)",
+            "Core Production (Direction + Extension)",
+            "Polish & Delivery (Audio + Marketing + QA)"
+        ],
+        "created": datetime.now().isoformat(),
+        "version": "3.5.5",
         "status": "Ready for production",
-        "role_cards_loaded": str(AGENTS_DIR) if AGENTS_DIR.exists() else "Not found"
+        "notes": "Generated via Grok Imagine Cinematic Studio CLI. Use Web UI for visual simulation and live Grok API."
     }
 
     Path(output).write_text(json.dumps(bible, indent=2))
@@ -252,7 +269,8 @@ def create_bible(
     state["project"] = bible
     save_project_state(state)
 
-    console.print(f"[green]✅ Production Bible created and saved to project state:[/green] {output}")
+    console.print(f"[green]✅ Rich Production Bible created:[/green] {output}")
+    console.print("[dim]Includes locked variables, key agents, and recommended phases[/dim]")
 
 @app.command()
 def memory(
