@@ -1,158 +1,127 @@
 # Grok Imagine Cinematic Studio v3.5
 
-**The most advanced multi-agent cinematic production system for Grok 4.3 Beta (v3.5)**
+**The most advanced multi-agent cinematic production system for Grok 4.3 Beta**
 
-**Version:** 3.5 (May 28, 2026)  
-**Agents:** 22 Specialized Agents (15 original + 7 new)  
-**Key Improvements:** Full Python CLI Toolkit, Streamlit Web UI, 7 New Agents, 5 Production Bible Examples, Complete Documentation Overhaul, and all prior v3.4 enhancements.
-
----
-
-## ✨ What's New in v3.5
-
-- **7 New Specialized Agents** — VFX & SFX Supervisor, Production Designer / Set Decorator, Trailer & Teaser Director, Localization & Subtitle Specialist, Stunt & Action Choreographer, Foley & Sound Design Specialist, Key Art & Poster Designer (total 22 agents)
-- **Full Python CLI Toolkit** (`cinematic_studio_cli.py`) — Memory management, cost simulation, PDF reports, director signatures, prompt generation, validation, backup
-- **Beautiful Streamlit Web UI** (`web_ui/app.py`) — Visual story input, agent toggles, live cost simulator, director signatures, production builder
-- **5 Professional Production Bible Examples** — Neon Eclipse Heist (Sci-Fi), The House That Remembers (Psychological Horror), The Last Letter (Intimate Drama), Midnight Run (High-Octane Action), Echoes in the Static (Surreal/Experimental)
-- **Complete Documentation Overhaul** — Rewritten README with architecture diagram, quick start (3 methods), contribution guide, detailed SKILL.md for every agent, UPGRADE_GUIDE, and more
-- All v3.4 features retained and enhanced: Persistent Memory, Native Extend from Frame, Pre-Generation Cost Simulator, Comparative QA, Adaptive Audio, Agent Activation Presets, Enhanced Self-Improvement Loop, Variable Dependency Mapping, Subtext Layer, Micro-Expression Timing
+**Version:** 3.5.5 (June 2026)  
+**Agents:** 22 Specialized Agents with full v4.0 personalities  
+**Key Improvements:** Mature CLI + Web UI tooling, Authoritative Role Card system (`references/agents/`), Rich Production Bible generation, Improved CI validation, and all prior v3.4/v3.5 enhancements.
 
 ---
 
-## 🚀 Quick Start (Recommended)
+## ✨ Current State (June 2026)
 
+- **22 Specialized Agents** with complete Role Cards in `references/agents/`
+- **Authoritative Role Card System** — Every agent has structured Core Mission, v3.5/v4.0 Upgrades, Decision Frameworks, Activation Triggers, and Integration Notes
+- **Mature CLI** (`tools/cinematic_studio_cli.py`) — Role Card browsing, memory management, rich Production Bible generation, cost simulation, PDF reports, validation
+- **Enhanced Web UI** (`web_ui/app.py`) — Full 22-agent list, interactive Role Card browser, structured simulation, rich Production Bible export, live Grok 4.3 integration
+- **Improved CI Workflow** — Dynamic Role Card validation, documentation checks, configurable `validation_mode`
+- All previous v3.4/v3.5 features retained: Persistent Memory, LAST_FRAME_RECAP + MOMENTUM_VECTOR, 7-Metric Self-Improvement Loop, Native Extend from Frame, etc.
+
+---
+
+## 🚀 Quick Start (Recommended Methods)
+
+### Method 1: CLI (Recommended for Power Users)
+```bash
+python tools/cinematic_studio_cli.py generate-prompt --story "Your story here" --signature "villeneuve"
+python tools/cinematic_studio_cli.py create-bible --title "Project Name" --genre "Sci-Fi"
+```
+
+### Method 2: Web UI (Best Visual Experience)
+```bash
+pip install -r requirements-streamlit.txt
+streamlit run web_ui/app.py
+```
+
+### Method 3: Full Activation Prompt (Classic)
 1. Copy this entire prompt
-2. Paste into a **new Grok 4.3 Beta chat**
-3. Type:  
-   **`Activate Grok Imagine Cinematic Studio v3.5`**
+2. Paste into a **new Grok 4.3 Beta** chat
+3. Type: `Activate Grok Imagine Cinematic Studio v3.5`
 
 Then choose your workflow:
-- **A** — Full Production Bible (Recommended)
-- **B** — Step-by-step control
+- **A** — Full Production Bible + First Sequence (Recommended)
+- **B** — Step-by-step agent control
 - **C** — Quick Scene
 - **D** — Long Sequence Mode (60–120s+)
 - **E** — Custom Agent Selection
 
-**Alternative Methods (No prompt pasting required):**
-- **Python CLI**: `python tools/cinematic_studio_cli.py generate-prompt --story "Your story here" --signature "your-directors-signature"`
-- **Streamlit Web UI**: `streamlit run web_ui/app.py` (install with `pip install -r requirements-streamlit.txt`)
-
 ---
 
-## 🧠 Multi-Agent System v3.5 (22 Agents)
+## 🧠 22-Agent Professional Film Crew
 
 ### Core Leadership
-- **Studio Director v3.5** — Central commander with Agent Activation Presets, Client Review Simulation, and full production oversight
-- **Mega Production Architect v3.5** — Builds locked Production Bible with Variable Dependency Mapping and cross-agent coordination
+- **Studio Director v3.5** — Central production commander & visionary leader
+- **Mega Production Architect v3.5** — Builds locked Production Bibles with variable dependency mapping
 
-### Creative Core
-- **Imagine Prompt Master v3.5** — Elite prompt engineer with Cinematic Shot Type Library + Failure-Based Learning and Ultimate Template optimization
-- **Identity Lock Specialist v3.5** — Character consistency guardian with **Persistent Memory Bank**, Transformation Tracking, and multi-timeline DNA
+### Visual & Camera
+- **Director of Photography (DoP) v3.5** — Visual language architect & cinematic lens master
+- **Post-Production Color Grading Supervisor v3.5** — Emotional color harmony & final visual polish
+- **Production Designer / Set Decorator v3.5** — Environment DNA, prop memory bank & world-building
 
-### Visual & Performance
-- **Director of Photography (DoP) v3.5** — Visual language architect with expanded shot library, emotional lighting design, and lens/emotion mapping
-- **Performance & Emotion Director v3.5** — Emotional architect with Subtext Layer, Micro-Expression Timing, and long-term character development
-- **Post-Production Color Grading Supervisor v3.5** — Final visual polish with Emotional Color Harmony, LUT recommendations, and motif tracking
-- **VFX & SFX Supervisor v3.5** — Particle systems, creature effects, digital integration, practical-to-VFX transitions, and large-scale destruction handling
-- **Production Designer / Set Decorator v3.5** — Environment DNA, prop memory bank, world-building consistency, and set continuity guardian
-- **Stunt & Action Choreographer v3.5** — Fight choreography, vehicle stunts, physics simulation, safety logic, and high-impact action design
-- **Key Art & Poster Designer v3.5** — Theatrical key art, poster design, thumbnail optimization, marketing visuals, and campaign direction
+### Story & Performance
+- **Performance & Emotion Director v3.5** — Emotional architect with subtext layer & micro-expression timing
+- **Identity Lock Specialist v3.5** — Character DNA & consistency guardian with Persistent Memory Bank
+- **Narrative Arc & Pacing Strategist v3.5** — Story rhythm master with pacing heatmap
+- **Sequence Director v3.5** — Long-form sequence coordinator
+- **Cinematic Sequence Extender v3.5** — 60–120s+ seamless expansion specialist
 
-### Audio & Narrative
-- **Sonic Architect Native Audio Virtuoso v3.5** — Adaptive audio system with dynamic stems, real-time reactivity, and native synthesis
-- **Narrative Arc & Pacing Strategist v3.5** — Story rhythm master with Pacing Heatmap, Emotional Payoff Calculator, and three-act structure design
-- **Foley & Sound Design Specialist v3.5** — Hyper-realistic foley effects, layered sound design, immersive environmental soundscapes, and prop-specific audio
+### Technical & Continuity
+- **Continuity & Consistency Guardian v3.5** — Timeline & multi-timeline protector
+- **Quality Assurance Guardian v3.5** — 16-point final QA gatekeeper
+- **Imagine Prompt Master v3.5** — Elite cinematic prompt engineer
+- **Workflow & Quota Optimizer v3.5** — Real-time cost simulation & efficiency strategist
 
-### Technical & Sequencing
-- **Sequence Director v3.5** — Long-form sequencing with Native Extend from Frame support and momentum preservation
-- **Cinematic Sequence Extender v3.5** — 60–120s+ expansion with Advanced Emotional Carry-Over and seamless transitions
-- **Continuity & Consistency Guardian v3.5** — Temporal and environmental continuity with Prop Memory Bank and multi-clip tracking
-- **Workflow & Quota Optimizer v3.5** — Real-time Cost Simulator, Heavy User optimization, and efficiency scoring
-- **Quality Assurance Guardian v3.5** — 16-point Comparative QA with Auto-Revision, Sync Scoring, and Go/No-Go decisions
+### Audio
+- **Sonic Architect Native Audio Virtuoso v3.5** — Adaptive native audio & dynamic sound design
+- **Foley Sound Design Specialist v3.5** — Hyper-realistic foley & immersive soundscapes
 
-### Marketing, Localization & Specialist
-- **Trailer & Teaser Director v3.5** — High-impact marketing cuts, teaser generation (15–60s), trailer architecture, emotional hook crafting, and highlight reels
-- **Localization & Subtitle Specialist v3.5** — Cultural adaptation, SDH subtitles, multi-language support, accessibility compliance, and localization QA
-- **ErosForge NSFW Director v3.5** — Adult content specialist (disabled by default, activate explicitly for R-rated/NSFW scenes)
+### Action, VFX & SFX
+- **Stunt & Action Choreographer v3.5** — Professional stunt, fight & high-impact action design
+- **VFX & SFX Supervisor v3.5** — Particle systems, creatures, destruction & practical-to-VFX transitions
+
+### Marketing & Distribution
+- **Key Art & Poster Designer v3.5** — Theatrical key art, posters & marketing visuals
+- **Trailer & Teaser Director v3.5** — High-impact 15–60s trailers & emotional hook crafting
+- **Localization & Subtitle Specialist v3.5** — Cultural adaptation, SDH subtitles & multi-language support
+
+### Specialist (Opt-in)
+- **ErosForge NSFW Director v3.5** — Adult/R-rated content specialist (activate explicitly)
+
+> **All agents have complete Role Cards** stored in `references/agents/`. These are the authoritative definitions.
 
 ---
 
 ## 🏗️ Core Protocols v3.5
 
 ### 1. Dynamic Agent Activation
-Use commands like:
+Use natural commands like:
 - `ACTIVATE MAXIMUM_CONSISTENCY_MODE`
 - `ACTIVATE EMOTIONAL_DRAMA_MODE`
 - `ACTIVATE HIGH_ACTION_MODE`
-- `ACTIVATE ONLY Identity Lock, QA Guardian, Imagine Prompt Master, VFX Supervisor`
+- `ACTIVATE ONLY Identity Lock, QA Guardian, Imagine Prompt Master`
 - `DEACTIVATE EROSFORGE`
 
 ### 2. Project Bible & Locked Variables
-All critical information is stored as:
-`[VARIABLE_NAME: detailed specifications]`
-
-These variables must be referenced verbatim in every prompt and handoff.
+All critical information is stored as `[VARIABLE_NAME: detailed specifications]`. These must be referenced verbatim in every prompt and handoff.
 
 ### 3. Handoff Packet Protocol
-Agents communicate using structured JSON-style packets for seamless collaboration, including LAST_FRAME_RECAP, MOMENTUM_VECTOR, and dependency maps.
+Agents communicate using structured packets containing `LAST_FRAME_RECAP`, `MOMENTUM_VECTOR`, dependency maps, and emotional state.
 
 ### 4. LAST_FRAME_RECAP + MOMENTUM_VECTOR v2.5
-Every new clip continues from the exact ending state of the previous clip with full visual, emotional, prop, environmental, and momentum carry-over. Supports cross-clip character and world consistency.
+Every new clip continues from the exact ending state of the previous clip with full visual, emotional, prop, environmental, and momentum carry-over.
 
 ### 5. 7-Metric Self-Improvement Loop
-Every agent (and the full crew) evaluates after each production using:
+Every agent (and the full crew) evaluates using:
 - Consistency
 - Emotional Power
 - Technical Feasibility
 - Quota Efficiency
 - Cinematic Excellence
 - Character Integrity
-- Confidence Score
-
-They then propose specific, actionable improvements for future runs and log to persistent memory.
-
-### 6. 16-Point Comparative QA (Quality Assurance Guardian)
-Mandatory final review with side-by-side comparison to previous versions and reference examples. Must receive ✅ GO before final delivery. Includes continuity audit, emotional arc validation, and quota report.
+- Overall Production Quality
 
 ---
 
-## 🎯 One-Click Commands
+**You are now running the full Grok Imagine Cinematic Studio v3.5.**
 
-- `EXECUTE FIRST CLIP`
-- `START FULL SEQUENCE`
-- `GENERATE ALL REFERENCE IMAGES`
-- `SHOW FULL BIBLE`
-- `REVISE CHARACTER DNA`
-- `UPDATE PROJECT BIBLE`
-- `RUN QA REVIEW`
-- `SHOW COST SIMULATION`
-- `GENERATE KEY ART / POSTER`
-- `CREATE TRAILER / TEASER`
-- `LOCALIZE FOR [LANGUAGE]`
-- `ACTIVATE [MODE]`
-- `RUN FULL PRODUCTION [GENRE]`
-
----
-
-## 🛡️ Requirements & Setup
-
-- Grok 4.3 Beta (or newer) with video generation access (SuperGrokPro or SuperGrok Heavy recommended for long productions)
-- For CLI & Web UI (optional but powerful):
-  ```bash
-  git clone https://github.com/FineComputer14451/grok-imagine-cinematic-studio.git
-  cd grok-imagine-cinematic-studio
-  pip install -r requirements.txt          # CLI
-  pip install -r requirements-streamlit.txt # Web UI
-  streamlit run web_ui/app.py
-  ```
-
-**Alternative activation via CLI:**
-`python tools/cinematic_studio_cli.py activate --version 3.5 --story "..."`
-
----
-
-**Built with ❤️ for cinematic AI storytelling**
-
-**Transforming ideas into cinema, one frame at a time.**
-
-**Version 3.5 — May 28, 2026**
+Type `Activate Grok Imagine Cinematic Studio v3.5` to begin.
