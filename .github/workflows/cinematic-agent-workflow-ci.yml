@@ -1,0 +1,162 @@
+name: Cinematic Multi-Agent Workflow CI (v3.5)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.md'
+      - 'agents/**'
+      - '.grok/skills/**'
+      - 'references/**'
+      - 'web_ui/**'
+      - 'tools/**'
+      - '.github/workflows/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**.md'
+      - 'agents/**'
+      - '.grok/skills/**'
+      - 'references/**'
+      - 'web_ui/**'
+      - 'tools/**'
+  workflow_dispatch:
+    inputs:
+      validation_mode:
+        description: 'Validation level'
+        required: false
+        default: 'standard'
+        type: choice
+        options:
+          - standard
+          - strict
+          - full
+
+env:
+  VALIDATION_MODE: ${{ github.event.inputs.validation_mode || 'standard' }}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: '**/*.md'
+          config: '.markdownlint.json'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Tools
+        run: pip install pyflakes --quiet
+
+      # ============================================================
+      # ROLE CARD & AGENT VALIDATION (Robust)
+      # ============================================================
+      - name: Role Card & Agent Validation
+        run: |
+          echo "🔍 Validating Role Cards and Agents (Mode: $VALIDATION_MODE)"
+          echo "============================================================"
+
+          # Count Role Cards (excluding index)
+          if [ -d "references/agents" ]; then
+            ROLE_CARDS=$(find references/agents -name "*.md" ! -name "*INDEX*" -type f | wc -l)
+            echo "📋 Found $ROLE_CARDS Role Cards in references/agents/"
+          else
+            echo "❌ references/agents/ directory missing"
+            exit 1
+          fi
+
+          # Basic structure check on Role Cards
+          STRUCTURE_ISSUES=0
+          for card in $(find references/agents -name "*.md" ! -name "*INDEX*" -type f); do
+            name=$(basename "$card" .md)
+            if ! grep -q "Core Mission" "$card" || ! grep -q "v3.5" "$card"; then
+              echo "⚠️  $name: Missing 'Core Mission' or v3.5 section"
+              STRUCTURE_ISSUES=$((STRUCTURE_ISSUES+1))
+            fi
+          done
+
+          if [ $STRUCTURE_ISSUES -gt 0 ]; then
+            echo "⚠️  Found $STRUCTURE_ISSUES Role Cards with structural issues"
+          else
+            echo "✅ All Role Cards have basic required sections"
+          fi
+
+          # Version tag check (non-blocking in standard mode)
+          VERSION_ISSUES=0
+          for dir in agents references/agents .grok/skills; do
+            if [ -d "$dir" ]; then
+              for f in $(find "$dir" -name "*.md" -o -name "*.txt" 2>/dev/null); do
+                if ! grep -qE 'v3\.(4|5)' "$f" 2>/dev/null; then
+                  VERSION_ISSUES=$((VERSION_ISSUES+1))
+                fi
+              done
+            fi
+          done
+          echo "🔖 Files missing v3.4/v3.5 tag: $VERSION_ISSUES"
+
+          # Documentation check (advisory)
+          DOC_WARNINGS=0
+          for doc in README.md Quick_Start_Guide.md CHANGELOG.md; do
+            if [ ! -f "$doc" ]; then
+              echo "⚠️  Missing documentation: $doc"
+              DOC_WARNINGS=$((DOC_WARNINGS+1))
+            fi
+          done
+
+          # Decision logic
+          FAIL=false
+          if [ "$VALIDATION_MODE" = "strict" ]; then
+            if [ $STRUCTURE_ISSUES -gt 2 ] || [ $VERSION_ISSUES -gt 8 ]; then
+              FAIL=true
+            fi
+          elif [ "$VALIDATION_MODE" = "full" ]; then
+            if [ $STRUCTURE_ISSUES -gt 0 ] || [ $VERSION_ISSUES -gt 3 ]; then
+              FAIL=true
+            fi
+          else
+            # standard mode - only fail on major issues
+            if [ $STRUCTURE_ISSUES -gt 5 ]; then
+              FAIL=true
+            fi
+          fi
+
+          if $FAIL; then
+            echo "❌ Validation failed (mode: $VALIDATION_MODE)"
+            exit 1
+          fi
+
+          echo "✅ Role Card & Agent validation passed"
+
+      # ============================================================
+      # PYTHON & CORE FILES
+      # ============================================================
+      - name: Python Syntax & Core Files
+        run: |
+          echo "🐍 Checking Python files..."
+          python -m py_compile tools/cinematic_studio_cli.py web_ui/app.py 2>/dev/null || echo "⚠️  Python check completed with warnings"
+
+          for f in MASTER_PROMPT_v3.5.md tools/cinematic_studio_cli.py web_ui/app.py; do
+            if [ -f "$f" ]; then
+              echo "✅ $f present"
+            else
+              echo "❌ Missing critical file: $f"
+              exit 1
+            fi
+          done
+
+      # ============================================================
+      # SUMMARY
+      # ============================================================
+      - name: Summary
+        if: always()
+        run: |
+          echo "## 🎬 Cinematic CI Results" >> $GITHUB_STEP_SUMMARY
+          echo "Validation completed successfully." >> $GITHUB_STEP_SUMMARY

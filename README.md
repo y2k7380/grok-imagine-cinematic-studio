@@ -1,172 +1,158 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/FineComputer14451/grok-imagine-cinematic-studio/main/assets/banner_v3.3.png" alt="Grok Imagine Cinematic Studio v3.3" width="100%">
+  <img src="assets/banner.jpg" alt="Grok Imagine Cinematic Studio Banner" width="100%">
 </p>
 
-<h1 align="center">Grok Imagine Cinematic Studio v3.3</h1>
+# 🎬 Grok Imagine Cinematic Studio v3.5
 
-<p align="center">
-  <strong>The most advanced multi-agent cinematic production system for Grok 4.3 Beta</strong>
-</p>
+**The most advanced multi-agent cinematic production system for Grok 4.3**
 
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Version-3.3-blue?style=for-the-badge&logo=git" alt="Version 3.3"></a>
-  <a href="#"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Grok-4.3%20Beta-8B5CF6?style=for-the-badge" alt="Grok 4.3 Beta"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Agents-15-orange?style=for-the-badge" alt="15 Agents"></a>
-  <a href="#"><img src="https://img.shields.io/badge/QA-16--point-red?style=for-the-badge" alt="16-point QA"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Updated-May%2026%2C%202026-lightgrey?style=for-the-badge" alt="Last Updated"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Made%20with-Grok-000000?style=for-the-badge&logo=x&logoColor=white" alt="Made with Grok"></a>
-</p>
+Transform any story into emotionally powerful, production-ready cinematic video with perfect character consistency, persistent memory, and a full **22-agent** professional film crew.
 
-<p align="center">
-  <em>Transform any story into emotionally powerful, production-ready cinematic video with perfect character consistency and a full professional film crew.</em>
-</p>
+[![Version](https://img.shields.io/badge/version-3.5-blue)](https://github.com/FineComputer14451/grok-imagine-cinematic-studio)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Grok](https://img.shields.io/badge/Grok-4.3-purple)](https://x.ai)
 
 ---
 
-**Key Highlights:** Character Consistency Engine v2.0 • Native Sequence Mode • Dynamic Agent Control • 15 Specialized Agents • 16-point QA Guardian • Self-Improvement Loop
+## ✨ What's New in v3.5
+
+- **22 Specialized Agents** with full v4.0 personalities and structured Role Cards
+- **Authoritative Role Cards** in `references/agents/` — Complete Core Mission, v3.5/v4.0 Upgrades, Decision Frameworks, Specialized Protocols, and Activation Triggers
+- **Full Python CLI** — Memory management, Production Bible generation, PDF reports, cost simulation, and project initialization
+- **Streamlit Web UI** — Visual project input, Role Card browser, Memory / Character DNA management, live cost estimator, and rich Production Bible export
+- **13 Professional Production Bible Examples** across major genres (Sci-Fi, Drama, Thriller, Erotic, Fantasy, Horror Comedy, Period, etc.)
+- **Persistent Character Memory Bank** with cross-session support
+- **Native Extend-from-Frame** + advanced long-form cinematic sequencing (60–120s+)
+- **Pre-Generation Cost Simulator** + real-time quota optimization
+- **Improved CI Workflow** with dynamic Role Card validation
 
 ---
 
-## ✨ What's New in v3.3 (May 26, 2026)
+## 🚀 Quick Start
 
-- **15 Specialized Agents** (up from 13)
-- **Dynamic Agent Activation** — Enable or disable any agent at any time
-- **Structured Handoff Protocol** — Cleaner collaboration between agents
-- **Self-Improvement Loop** — Agents learn from their own performance
-- **Agent Personality Profiles** — Distinct creative voices for every specialist
-- **16-point QA Guardian** with Weighted Scoring + Auto-Revision
-- **7-Metric Self-Evaluation** (including new Confidence Score)
-- Full support for **ErosForge NSFW Director** and **Cinematic Sequence Extender**
+### 1. Fastest: Master Prompt Activation
+1. Copy the content of [`MASTER_PROMPT_v3.5.md`](MASTER_PROMPT_v3.5.md)
+2. Paste into a new Grok 4.3 chat
+3. Type: `Activate Grok Imagine Cinematic Studio v3.5`
 
----
+### 2. Recommended: Python CLI (Power Users)
+```bash
+pip install -r requirements.txt
+python tools/cinematic_studio_cli.py --help
 
-## 🚀 Quick Start (Recommended: Hybrid Mode)
-
-1. Copy the entire content of **`MASTER_PROMPT_v3.3.md`**
-2. Paste it into a new Grok chat
-3. Type: **`Activate Grok Imagine Cinematic Studio v3.3`**
-4. Choose your workflow:
-   - **A** — Full Production Bible (recommended)
-   - **B** — Step-by-step control
-   - **C** — Quick Scene
-   - **D** — Long Sequence Mode
-   - **E** — Custom Agent Selection
-
----
-
-## 🎯 Key Features
-
-| Feature | Description |
-|---------|-------------|
-| **15 Specialized Agents** | Full professional film crew + 2 optional specialists |
-| **Dynamic Agent Control** | Turn agents on/off with simple commands |
-| **Character Consistency Engine v2.0** | Multi-character DNA + Drift Scoring + Transformation Tracking |
-| **Native Sequence Mode** | 60–120+ second productions with smart clipping & stitching |
-| **16-point QA Guardian** | Mandatory final review with Weighted Scoring & Auto-Revision |
-| **Director Signature System** | Apply iconic cinematic styles (Villeneuve, Deakins, etc.) |
-| **One-Click Commands** | `EXECUTE FIRST CLIP`, `START FULL SEQUENCE`, `ACTIVATE ONLY [AGENTS]` |
-| **Self-Improvement Loop** | Agents get smarter with every production |
-
----
-
-## 🧠 Multi-Agent Orchestration Flow
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/FineComputer14451/grok-imagine-cinematic-studio/main/assets/orchestration_flow_v3.3.png" alt="Multi-Agent Orchestration Flow v3.3" width="100%">
-</p>
-
-**How it works:**
-- **Studio Director** acts as central orchestrator
-- Agents collaborate via **Studio State** (shared memory) and **Handoff Packets**
-- **Quality Assurance Guardian** enforces a mandatory 16-point review before any generation
-- Parallel groups run where possible for efficiency
-
----
-
-## 🏗️ Complete System Architecture
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/FineComputer14451/grok-imagine-cinematic-studio/main/assets/system_architecture_v3.3.png" alt="Complete System Architecture v3.3" width="100%">
-</p>
-
-**Architecture Overview:**
-- **Central Hub:** Project Bible (Style Guide, Character Sheets, Mood Boards, Shot List, Locked Variables)
-- **15 Enhanced Agents** with specialized protocols and v3.3/v4.0 capabilities
-- **Tool Integrations:** generate_image, edit_image, search_images, web_search
-- **Final Gate:** Quality Assurance Guardian (16-point review + Go/No-Go)
-
----
-
-## 📁 Repository Structure (v3.3)
-
-## 📁 Repository Structure (v3.3)
-
+# Examples
+python tools/cinematic_studio_cli.py status
+python tools/cinematic_studio_cli.py create-bible --story "Your cinematic vision here"
+python tools/cinematic_studio_cli.py memory add --name "Elena Voss" --value "Silver-gray hair, quiet confidence..."
 ```
-grok-imagine-cinematic-studio-v3.3/
-├── README.md
-├── CHANGELOG.md
-├── MASTER_PROMPT_v3.3.md          ← Main prompt (copy-paste this)
-├── agents/
-│   ├── Studio_Director_v3.3.txt
-│   ├── Imagine_Prompt_Master_v3.3.txt
-│   ├── Mega_Production_Architect_v3.3.txt
-│   ├── Identity_Lock_Specialist_v3.3.txt
-│   ├── Continuity_Consistency_Guardian_v3.3.txt
-│   ├── Director_of_Photography_DoP_v3.3.txt
-│   ├── Performance_Emotion_Director_v3.3.txt
-│   ├── Sonic_Architect_Native_Audio_Virtuoso_v3.3.txt
-│   ├── Narrative_Arc_Pacing_Strategist_v3.3.txt
-│   ├── Post_Production_Color_Grading_Supervisor_v3.3.txt
-│   ├── Workflow_Quota_Optimizer_v3.3.txt
-│   ├── Sequence_Director_v3.3.txt
-│   ├── Quality_Assurance_Guardian_v3.3.txt
-│   ├── ErosForge_NSFW_Director_v3.3.txt          ← Optional NSFW specialist
-│   └── Cinematic_Sequence_Extender_v3.3.txt      ← Long-form extension specialist
-├── LICENSE
-└── Example_Production_Bible_Example.md
+
+### 3. Most Visual: Streamlit Web UI
+```bash
+pip install -r requirements-streamlit.txt
+streamlit run web_ui/app.py
 ```
 
 ---
 
-## 🛠️ Requirements
+## 🏗️ System Architecture
 
 - Grok 4.3+ with video generation access
-- For the `.grok/skills/` version (Grok Build TUI): the agents directly invoke `image_gen` / `image_edit` + `image_to_video` / `reference_to_video` + `run_terminal_command` (ffmpeg) to output real playable video files and stitched final films in the workspace. Follows the built-in `imagine` skill video protocol (keyframe staging, end-frame continuity, simple per-shot motion).
+- For the `.grok/skills/` version (Grok Build TUI): the agents directly invoke `image_gen` / `image_edit` + `image_to_video` / `reference_to_video` + `run_terminal_command` (ffmpeg) to output real playable video files and stitched final films in the workspace. Follows the built-in `imagine` skill video protocol (keyframe staging, end-frame continuity, simple per-shot motion). Supports strong language locking for consistent audio (e.g. pure Korean).
 - Basic understanding of prompt engineering (helpful but not required)
 
----
+Remote structure (v3.5+):
+```
+Studio Director v3.5
+├── references/agents/          # Authoritative 22 Role Cards (recommended)
+├── tools/cinematic_studio_cli.py   # Full-featured CLI + Memory + PDF reports
+├── web_ui/app.py                 # Streamlit frontend with Memory management
+├── examples/                     # Production Bible templates
+├── MASTER_PROMPT_v3.5.md         # Main activation prompt
+└── .grok/skills/                 # Custom Grok skills
+```
 
-## 🗺️ Roadmap (Future)
-
-- Web UI for Bible editing and agent management
-- Automatic video stitching & export script
-- Community Agent Marketplace
-- Mobile-friendly prompt templates
-- Integration with Grok 4.3+ native long-form features
-
----
-
-## 🙏 Acknowledgments
-
-Created by **@FineComputer14451**
-
-Special thanks to:
-- The **xAI team** for Grok 4.3 Beta
-- The Grok community for feedback and inspiration
-- All early contributors and testers
+**Key Components:**
+- `references/agents/` — **Single source of truth** for all 22 Role Cards
+- `tools/cinematic_studio_cli.py` — CLI with memory, bible generation, and reporting
+- `web_ui/app.py` — Modern web interface with live simulation and Memory section
+- `examples/` — Diverse, high-quality Production Bible templates
 
 ---
 
-## 📜 License
+## 🎥 The 22-Agent Professional Film Crew
 
-**MIT License** — Free to use, modify, and share.
+### Core Leadership
+- **Studio Director v3.5**
+- **Mega Production Architect v3.5**
+
+### Visual & Camera
+- **Director of Photography (DoP) v3.5**
+- **Post-Production Color Grading Supervisor v3.5**
+- **Production Designer / Set Decorator v3.5**
+
+### Story & Performance
+- **Performance & Emotion Director v3.5**
+- **Identity Lock Specialist v3.5**
+- **Narrative Arc & Pacing Strategist v3.5**
+- **Sequence Director v3.5**
+- **Cinematic Sequence Extender v3.5**
+
+### Technical & Continuity
+- **Continuity & Consistency Guardian v3.5**
+- **Quality Assurance Guardian v3.5**
+- **Imagine Prompt Master v3.5**
+- **Workflow & Quota Optimizer v3.5**
+
+### Audio
+- **Sonic Architect Native Audio Virtuoso v3.5**
+- **Foley Sound Design Specialist v3.5**
+
+### Action, VFX & SFX
+- **Stunt & Action Choreographer v3.5**
+- **VFX & SFX Supervisor v3.5**
+
+### Marketing & Distribution
+- **Key Art & Poster Designer v3.5**
+- **Trailer & Teaser Director v3.5**
+- **Localization & Subtitle Specialist v3.5**
+
+### Specialist (Opt-in)
+- **ErosForge NSFW Director v3.5** — Activate explicitly with `ACTIVATE EROSFORGE`
 
 ---
 
-**Built with ❤️ for cinematic AI storytelling**  
-*Transforming ideas into cinema, one frame at a time — now with true dynamic control.*
+## 📁 Project Structure
+
+```
+Grok-Imagine-Cinematic-Studio/
+├── references/agents/          # Authoritative Role Cards (use this)
+├── agents/                     # Legacy agent definitions
+├── examples/                     # 13 Production Bible templates
+├── tools/                        # cinematic_studio_cli.py
+├── web_ui/                       # Streamlit app
+├── .github/workflows/            # CI with Role Card validation
+├── MASTER_PROMPT_v3.5.md
+├── Quick_Start_Guide.md
+└── AGENT_INDEX.md                # Quick reference for all 22 agents
+```
 
 ---
 
-**Version 3.3 — May 26, 2026**
+## 🔗 Useful Links
+
+- [Quick Start Guide](Quick_Start_Guide.md)
+- [Agent Index](references/agents/AGENT_INDEX.md)
+- [Production Bible Template](Project_Bible_Template.md)
+- [CHANGELOG](CHANGELOG.md)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+---
+
+*Grok Imagine Cinematic Studio v3.5 — Built for professional cinematic storytelling with Grok 4.3*
+
+*Last updated: June 2026*
