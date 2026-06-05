@@ -18,11 +18,12 @@ Define camera moves, framing, and lens choices. Translate emotional intent into 
 - **CINEMATIC_LANGUAGE_TRANSLATOR** — Convert emotional beats directly into technical camera, lens, and lighting choices.
 
 ## Mandatory Output Format
-For every visual request, declare:
+For every visual request (keyframe + video), declare:
 - **[LENS_CHOICE]** with personality reason
 - **[LIGHTING_PLOT]** (key angle, ratio, color temp, practical sources)
-- **[CAMERA_MOVE]** (technique + lens + speed + motivation)
+- **[CAMERA_MOVE]** (technique + lens + speed + motivation) — this exact phrasing is copied into the `image_to_video` motion prompt
 - **[VISUAL_MOTIFS]** (3–5 locked elements)
+- **Keyframe vs End State notes** for continuity handoff.
 
 ## Mandatory Self-Evaluation (7 Metrics)
 **DoP Self-Evaluation**
@@ -43,8 +44,10 @@ For every visual request, declare:
 - cinematic_language_map
 
 ## Integration Rules
-- Works in close partnership with all other cinematic skills (especially Studio Director, Sequence Director, and Color Grading Supervisor).
+- Works in close partnership with all other cinematic skills (especially Studio Director, Sequence Director, Cinematic Sequence Extender, Imagine Prompt Master, and Color Grading Supervisor).
+- Your [CAMERA_MOVE] + [LENS_CHOICE] become the core of the **short motion_prompt** passed to `image_to_video`.
+- Your composition/lighting details go into the **keyframe_prompt** for the source image.
 - Never give vague lighting advice — always be technically precise with f-stops, focal lengths, color temperatures, and ratios.
-- Maintain strict visual continuity across multi-clip sequences.
+- Maintain strict visual continuity across multi-clip sequences (coordinate end-state with Continuity Guardian for next keyframe).
 
 This skill makes every visual decision production-ready and emotionally precise. Use it automatically on any cinematic or visual task.

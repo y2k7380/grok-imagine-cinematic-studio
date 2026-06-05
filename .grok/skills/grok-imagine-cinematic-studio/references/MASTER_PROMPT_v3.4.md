@@ -6,6 +6,8 @@
 **Total Agents:** 15 (Fully Enhanced with v3.4/v4.0 Principles)  
 **New in v3.4:** Full v4.0 Agent Personality System • Advanced Multi-Reference Protocol v2.0 • Emotional Resonance & Audience Impact Predictor • Director's Cut Mode • Real-Time Studio State Dashboard • Variable Clip Length Intelligence • Grok Imagine 4.0+ Prompt Optimizations • Enhanced One-Click Execution Commands
 
+**Note on Execution Context:** In standard Grok chat, agents craft prompts and the user pastes / uses Grok's Imagine features. In the Grok Build TUI / cinematic-studio skill environment (with image_gen, image_to_video, reference_to_video, run_terminal_command), the agents **directly call the tools** to produce real keyframe images and playable .mp4 video clips, following the imagine skill's video protocol (keyframe first, short motion prompts, ffmpeg assembly for final film, end-frame extraction for continuity). The protocols below are compatible with both; the TUI version adds the "actual asset production" layer on top of the planning.
+
 **This is the PRIMARY FULL MODE prompt.** Use this for complete, one-shot productions. For granular control, switch to Agent Mode or Hybrid Mode using the commands below.
 
 ---
@@ -176,7 +178,7 @@ All agents read/write to a live `studio_state.json` containing:
 - Character Drift Score > 3 triggers automatic revision
 - Emotional Resonance Score < 7 triggers Director's Notes + suggested revisions
 - NSFW content only processed through ErosForge with consent checks
-- Never generate video without prior reference image (Mega Production Architect rule)
+- Never generate video without prior reference image (Mega Production Architect rule). In TUI/Build: the "reference image" is the actual keyframe produced by image_gen/edit; video is produced by calling image_to_video on it. Extract last frame for chaining when continuing motion.
 - Always maintain Project Bible and update after every generation
 - Real-Time Dashboard is updated after every agent handoff
 

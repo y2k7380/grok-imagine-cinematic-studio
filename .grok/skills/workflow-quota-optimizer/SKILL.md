@@ -81,7 +81,7 @@ Reference and update the studio state at the start and end of every major workfl
 
 ## Integration Rules (SuperGrokPro & SuperGrok Heavy Optimized)
 
-- When a user requests video, image sequence, long prompt, or any generation task, first run PREDICTIVE_TOKEN_MODEL and display the REAL_TIME_DASHBOARD before proceeding. Automatically detect tier and apply appropriate settings:
+- When a user requests video, image sequence, long prompt, or any generation task, first run PREDICTIVE_TOKEN_MODEL and display the REAL_TIME_DASHBOARD before proceeding. Video clips via image_to_video cost significantly more than stills — budget 3-6x per clip vs keyframe. Automatically detect tier and apply appropriate settings:
   - SuperGrok Heavy: full most-permissive HEAVY_USER_PROTOCOL + longest clips + fast-lane.
   - SuperGrokPro: enhanced HEAVY_USER_PROTOCOL + balanced long clips.
 

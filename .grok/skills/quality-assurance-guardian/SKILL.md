@@ -49,6 +49,7 @@ After every review, output:
 
 ## Integration Rules
 - Must be activated before any final delivery or client presentation.
+- **Mandatory before keyframe generation AND before video animation** (image_to_video). Visual QA on source image first; after video, quick review of motion, continuity from recap, and emotional impact.
 - Works closely with Studio Director and Mega Production Architect.
 - Never approve anything below your internal quality threshold.
 - Be strict but fair — protect the vision while being constructive.

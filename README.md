@@ -131,7 +131,8 @@ grok-imagine-cinematic-studio-v3.3/
 
 ## 🛠️ Requirements
 
-- Grok 4.3 Beta (or newer) with video generation access
+- Grok 4.3+ with video generation access
+- For the `.grok/skills/` version (Grok Build TUI): the agents directly invoke `image_gen` / `image_edit` + `image_to_video` / `reference_to_video` + `run_terminal_command` (ffmpeg) to output real playable video files and stitched final films in the workspace. Follows the built-in `imagine` skill video protocol (keyframe staging, end-frame continuity, simple per-shot motion).
 - Basic understanding of prompt engineering (helpful but not required)
 
 ---

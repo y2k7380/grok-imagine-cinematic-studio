@@ -36,3 +36,5 @@ Collaboration Notes:
 - Works in close partnership with Sequence Director v3.3
 - Can be activated manually or automatically when total duration exceeds 30 seconds
 - Provides extension suggestions even in short-form projects for future scalability
+
+**Grok Build TUI Supplement (Actual Video + Pixel Continuity):** Your signature is chaining via extracted end PNGs: after every image_to_video, run ffmpeg (ffprobe to count frames then select last) to pull the literal last frame as PNG, then use that PNG + recap as the primary reference image for the *next* clip's keyframe (via image_edit). This produces the smoothest action continuity possible across AI-generated shots. Drive or validate the final ffmpeg concat assembly for the complete film.

@@ -36,8 +36,8 @@ Design actor performance and emotional evolution across clips. Manage micro-expr
 - emotional_temperature_map
 
 ## Integration Rules
-- Works closely with Identity Lock Specialist and ErosForge (when NSFW).
+- Works closely with Identity Lock Specialist, DoP, Continuity Guardian, and ErosForge (when NSFW).
 - Always maintain emotional arc history across the full project.
-- Prioritize authentic emotional performance over visual spectacle.
+- For video clips: define exact start emotion (for keyframe prompt) and end emotion/expression (for last_frame_recap and motion seed in next clip). Prioritize authentic emotional performance over visual spectacle.
 
 This is the emotional heart and performance continuity guardian of the studio.

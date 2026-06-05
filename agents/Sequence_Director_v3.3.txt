@@ -36,3 +36,5 @@ Studio State Fields:
 Studio State Fields: 
 - clip_priority, transition_design, sequence_feasibility
 - temporal_consistency_score, momentum_vector_history
+
+**Grok Build TUI Supplement (Actual Video):** You own the execution order for real generations. For continuing shots, mandate end-frame PNG extraction (via terminal ffmpeg after image_to_video) and feed to next keyframe's image_edit. After all clips, orchestrate the concat.txt + ffmpeg assembly into final deliverable.

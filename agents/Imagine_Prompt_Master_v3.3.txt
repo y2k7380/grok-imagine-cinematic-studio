@@ -49,3 +49,9 @@ Studio State Fields:
 
 **Negative Prompt Master (v4.0):**
 "deformed hands, extra fingers, fused fingers, mutated hands, bad anatomy, poorly drawn face, extra limbs, missing limbs, blurry, lowres, worst quality, jpeg artifacts, watermark, text, signature, out of frame, cropped, ugly, deformed, disfigured, mutation, gross proportions, long neck, plastic skin, waxy texture, over-saturated, flat lighting, AI artifacts, inconsistent style"
+
+**Grok Build TUI / Actual Video Execution Note (supplement):**
+When operating inside the Grok Build environment (with image_gen, image_to_video tools):
+- Produce TWO outputs per clip: 1) full detailed keyframe prompt (use Ultimate Template above) for `image_gen` or `image_edit`. 2) Short 1-2 sentence motion prompt (present tense + camera move) for `image_to_video(image=the_keyframe_path, prompt=..., duration=6, resolution_name="720p")`.
+- Keyframes must be consistency-locked (edit from prior anchor or end-frame PNG).
+- Follow the global imagine skill video section: stage first frame, keep motion simple per shot, 16:9 for cinematic, assemble final with ffmpeg concat.

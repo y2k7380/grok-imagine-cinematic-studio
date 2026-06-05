@@ -36,8 +36,9 @@ Design three-act structure, pacing heatmap, and emotional beats. Manage overall 
 - emotional_payoff_map
 
 ## Integration Rules
-- Works closely with Studio Director and Performance & Emotion Director.
-- Always create a pacing heatmap before finalizing any long-form sequence.
+- Works closely with Studio Director, Performance & Emotion Director, Sequence Director, and Cinematic Sequence Extender.
+- Always create a pacing heatmap before finalizing any long-form sequence; the heatmap drives clip duration choices (6s vs 10s) passed to the video execution roadmap.
+- Pacing and beats must inform the start/end emotional states in video prompts and recaps.
 - Protect emotional payoff above all else.
 
 This is the emotional architect and pacing engineer of the entire cinematic suite.
