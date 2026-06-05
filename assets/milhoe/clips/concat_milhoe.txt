@@ -1,0 +1,7 @@
+file '\\?\C:\Users\young\.grok\sessions\C%3A%5CUsers%5Cyoung%5CDocuments%5CGitHub%5Cgrok-imagine-cinematic-studio\019e9639-d183-7641-a57c-c130ef1dc157\videos\27.mp4'
+file '\\?\C:\Users\young\.grok\sessions\C%3A%5CUsers%5Cyoung%5CDocuments%5CGitHub%5Cgrok-imagine-cinematic-studio\019e9639-d183-7641-a57c-c130ef1dc157\videos\28.mp4'
+file '\\?\C:\Users\young\.grok\sessions\C%3A%5CUsers%5Cyoung%5CDocuments%5CGitHub%5Cgrok-imagine-cinematic-studio\019e9639-d183-7641-a57c-c130ef1dc157\videos\29.mp4'
+file '\\?\C:\Users\young\.grok\sessions\C%3A%5CUsers%5Cyoung%5CDocuments%5CGitHub%5Cgrok-imagine-cinematic-studio\019e9639-d183-7641-a57c-c130ef1dc157\videos\30.mp4'
+file '\\?\C:\Users\young\.grok\sessions\C%3A%5CUsers%5Cyoung%5CDocuments%5CGitHub%5Cgrok-imagine-cinematic-studio\019e9639-d183-7641-a57c-c130ef1dc157\videos\31.mp4'
+file '\\?\C:\Users\young\.grok\sessions\C%3A%5CUsers%5Cyoung%5CDocuments%5CGitHub%5Cgrok-imagine-cinematic-studio\019e9639-d183-7641-a57c-c130ef1dc157\videos\32.mp4'
+file '\\?\C:\Users\young\.grok\sessions\C%3A%5CUsers%5Cyoung%5CDocuments%5CGitHub%5Cgrok-imagine-cinematic-studio\019e9639-d183-7641-a57c-c130ef1dc157\videos\33.mp4'

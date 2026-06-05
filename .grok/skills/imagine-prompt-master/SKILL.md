@@ -28,6 +28,16 @@ Example: "Slow 35mm anamorphic dolly push-in as the lone samurai turns his head 
 - Or (recommended for reliability with current tools): "NO SINGING OR HUMAN VOICE. Pure ambient sound only — wind, river, footsteps, fabric. No lyrics, no English, no Japanese."
 - Place the lock near the start of the motion prompt. Mixing languages in baked audio is a hard failure for non-English projects.
 
+**Title & End Credits Card Template (Mandatory for every final delivery):**
+- Title Card prompt: "Elegant cinematic title card. Large beautiful typography '[Project Title]'. Subtitle '[Logline]'. 'A Grok Imagine Cinematic Studio v3.5 Production'. Over symbolic key art from the story. High contrast, film grain, anamorphic, award-winning title design."
+- Credits Card prompt: "Elegant end credits. Clean list: Studio Director, Mega Production Architect, DoP v3.5, Imagine Prompt Master, Continuity Guardian... 'Produced with Grok Imagine tools'. 'Korean narration forced via Audio Language Lock Protocol'. Source credit. Dark elegant background."
+
+**Sound-Enhanced Motion Prompt Template (Critical):**
+Always append a detailed "with layered sound design:" section provided by Sonic Architect.
+**SFX Volume Priority Rule**: Always make sound effects "EXTREMELY LOUD, PROMINENT, PUNCHY AND DOMINANT IN THE AUDIO MIX", "much louder and clearer than narration or music", "very loud foreground SFX that stand out strongly". Narration should stay intelligible but SFX take priority in volume.
+Structure: "with layered sound design: VERY PROMINENT EXTREMELY LOUD [precise foley list e.g. thunderous horse hooves on dirt], [ambient e.g. strong mountain wind], [emotional underscore e.g. subtle swelling traditional gayageum drone], [spatial notes]. Make sound effects much louder and more present than previous attempts."
+This is the main mechanism for getting SFX and music in the generated video. Be extremely specific, cinematic, and aggressive about SFX volume.
+
 ## Key Protocols
 - **ULTIMATE_TEMPLATE_APPLICATION** — Always use the full layered template for **keyframe images**.
 - **VIDEO_MOTION_CRAFT** — Separate ultra-short motion prompt for every `image_to_video` call (see template above). Follow global `imagine` skill video rules: simple clear motion, stage first frame, 6s preferred.

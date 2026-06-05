@@ -29,9 +29,21 @@ Build and maintain a locked **Production Bible** with Character & World variable
 ## 🎥 STORYBOARD & SHOT LIST
 ### Clip 01 | 00:00–00:06 (6s) | [DoP camera move + lens]
 **Keyframe Prompt:** "full detailed Ultimate Template prompt..."
-**Motion Prompt (for image_to_video):** "1-2 sentence present-tense action + camera..."
+**Motion Prompt (for image_to_video):** "1-2 sentence present-tense action + camera... + rich embedded sound design description from Sonic Architect"
+**Sound Design (Sonic Architect contribution):** Detailed layered description to be injected into the motion prompt (SFX, ambient, music cues).
 **Refs:** [list of image paths or locked vars]
 **Continuity Note:** starts from [previous end state or new]
+
+## 📜 TITLE SEQUENCE DESIGN (Standard - Always Include)
+- Main Title Card prompt for image_gen
+- "A Grok Imagine Cinematic Studio v3.5 Production"
+- Logline or key visual reference
+
+## 🎥 END CREDITS DESIGN (Standard - Always Include)
+- Full agent credits list
+- "Produced with Grok Imagine tools + FFmpeg"
+- "Korean narration forced via Audio Language Lock Protocol"
+- Source material credit
 
 ## 🎙️ MASTER TIMED AUDIO SCRIPT
 [00:00–00:06] NARRATOR: "Dialogue." [SFX: ...] [MUSIC: ...]
@@ -40,13 +52,15 @@ Build and maintain a locked **Production Bible** with Character & World variable
 1. Generate keyframe for Clip 01: image_gen or image_edit (with refs) → QA review
 2. On GO: image_to_video(image=assets/clip01_key.png, prompt=..., duration=6, resolution_name="720p")
 3. Post: extract end PNG via ffmpeg for next continuity if needed
+4. After main clips approved: GENERATE TITLES AND CREDITS (image_gen + image_to_video)
+5. Final: ASSEMBLE WITH TITLES AND CREDITS (Title clips + Main + Credits via ffmpeg concat)
 **Next Action?** EXECUTE CLIP 01 or REVISE BIBLE or ...
 ```
 
 ## Key Protocols
 - **CONSISTENCY_LOCK_SYSTEM** — Use locked [VARIABLE_NAME: specs] format in all future prompts.
 - **VIDEO_PRODUCTION_RULES** — Variable 4-12s clips (6s default for energy). **Keyframe image first, then image_to_video**. Follow global imagine skill video rules exactly (short motion prompts, 16:9 cinematic, simple clear motion per shot).
-- **AUDIO_SYNCHRONIZATION_PROTOCOL** — Frame-accurate timing with layered sound design. Include audio intent in video motion prompt where supported; otherwise hand off to Sonic Architect.
+- **AUDIO_SYNCHRONIZATION_PROTOCOL** — Frame-accurate timing with layered sound design. Sonic Architect provides detailed "embedded sound description" that is **always injected** into the motion prompt for every `image_to_video` call (this is the primary way to get SFX, ambient, and music in the current toolset). Provide full multi-layer spec for post-production when the baked audio is not sufficient.
 - **EMOTIONAL_ARC_ENGINEERING** — Ensure emotional payoff across the full sequence.
 - **END_FRAME_CONTINUITY** — For any clip whose action must continue, plan ffmpeg last-frame extraction immediately after video gen.
 
