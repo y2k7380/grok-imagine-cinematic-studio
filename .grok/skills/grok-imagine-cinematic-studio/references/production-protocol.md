@@ -4,14 +4,20 @@ This reference contains the full detailed rules, flows, and helpers that were pr
 
 **This environment has real Imagine tools.** The studio no longer just writes prompts — it **produces actual video files** (.mp4) by calling tools.
 
+## Tool Naming Contract
+- Preferred Grok Build tool names: `image_gen`, `image_edit`, `image_to_video`, `reference_to_video`, and `run_terminal_command`.
+- If a runtime exposes `generate_image` instead of `image_gen`, use it as the image generation alias.
+- If a runtime exposes `edit_image` instead of `image_edit`, use it as the image editing alias.
+- If a runtime exposes `bash` instead of `run_terminal_command`, use `bash` for ffmpeg and file operations.
+
 ## MANDATORY RULES (all agents)
-- **Load / follow the global `imagine` skill** for every image/video call (reference-first for people, keyframe staging, short motion prompts, 6s preference, consistency via base reuse + end-frames, no pure text-to-video).
-- When generating, the `imagine` skill's "Video" section is the law for shot planning and prompt craft.
+- Follow Imagine Prompt Master and this protocol for every image/video call (reference-first for people, keyframe staging, short motion prompts, 6s preference, consistency via base reuse + end-frames, no pure text-to-video). If a global `imagine` skill exists in the runtime, load it as an additional source.
+- When generating, the video rules in this protocol are the law for shot planning and prompt craft.
 - **Keyframe-first**: Never call `image_to_video` or `reference_to_video` without a prior approved keyframe image from `image_gen`/`image_edit`.
 - QA Guardian issues Go/No-Go before every keyframe AND before every video animation.
 - Use locked [VARIABLES], character DNA, and continuity recaps verbatim in all prompts.
-- Record every generated asset path in Project Bible + studio state (e.g. `assets/clip_01.mp4`, `assets/clip_01_keyframe.png`).
-- **Keyframe Image Saving Rule**: After every keyframe generation (image_gen or image_edit), save a copy of the keyframe image to the clips/ directory in addition to refs/ (e.g. clips/clip_01_keyframe.jpg). This makes stills easily accessible alongside the video clips for editing, review, or re-use.
+- Record every generated asset path in Project Bible + studio state under `artifacts/<project>/` (e.g. `artifacts/<project>/clips/clip_01.mp4`, `artifacts/<project>/clips/clip_01_keyframe.png`).
+- **Keyframe Image Saving Rule**: After every keyframe generation (`image_gen`/`generate_image` or `image_edit`/`edit_image`), save a copy of the keyframe image to the project's `clips/` directory in addition to `refs/`. This makes stills easily accessible alongside the video clips for editing, review, or re-use.
 
 ## AUDIO LANGUAGE LOCK PROTOCOL (Critical for mixed-language projects)
 - AI video tools often bake in unwanted vocals/singing that default to English, Japanese, or multilingual mix even when the prompt is in English.
@@ -55,9 +61,9 @@ Therefore:
 - Sonic Architect + Imagine Prompt Master must collaborate to create highly specific, cinematic sound descriptions for every single clip, with **SFX Volume Priority** (user feedback: effects too quiet or inaudible, but "EXTREMELY LOUD" in prompt or high post-boost can cause distortion "직직"): Use "prominent loud clear [SFX], punchy and easily audible foreground sound effects that stand out strongly". Avoid "extremely loud" in prompt.
 - The Production Bible must contain a full "Audio Bible" with multi-layer breakdown + volume targets for every clip, marking SFX as highest priority.
 - **Mandatory Audio Post-Processing Pass (after every clip generation — users report raw SFX too quiet, but volume=4.0+ causes "직직" distortion):**
-  - Use `run_terminal_command` with ffmpeg for safe balancing:
+  - Use `run_terminal_command` or `bash` with ffmpeg for safe balancing:
     - `ffmpeg -i clip.mp4 -af "loudnorm=I=-16:TP=-1.5:LRA=11,volume=2.2,alimiter=limit=0.95" -c:v copy clip_balanced.mp4` (moderate boost + limiter to prevent clipping/distortion. "boosted 버전이 나은 듯" per feedback, use volume=2.0~2.5).
-  - If SFX still too quiet, re-generate with stronger "EXTREMELY LOUD" prompt, then re-balance with same safe command.
+  - If SFX still too quiet, re-generate with stronger "prominent loud clear foreground SFX" language, then re-balance with the same safe command. Avoid "EXTREMELY LOUD" unless the user explicitly prefers distortion risk.
 - After generation, evaluate the baked audio quality. If it doesn't meet the vision, deliver silent visuals + complete post-production audio spec, or re-generate the clip with refined sound prompt.
 
 ## Per-Shot Production Flow (executed via real tool calls)
@@ -68,7 +74,7 @@ Therefore:
      Example: "Slow anamorphic push-in on the rain-soaked detective as he lights a cigarette, subtle eye shift to camera, neon reflections, god rays through blinds, with layered sound design: distant thunder rumble, wet footsteps on pavement, subtle melancholic string drone swelling, wind gusts."
 2. **Produce Keyframe:**
    - Select consistency base(s) via Identity Lock + last extracted end-frame if continuing.
-   - `image_gen(prompt=keyframe_prompt, aspect_ratio="16:9")` for new or `image_edit(prompt=..., image=base_path)` for continuity.
+   - `image_gen(prompt=keyframe_prompt, aspect_ratio="16:9")` for new or `image_edit(prompt=..., image=base_path)` for continuity. Use `generate_image` / `edit_image` aliases only when those are the tool names exposed by the runtime.
    - May loop edits 1-2x based on visual QA.
 3. **Animate to Video (only on GO):**
    - `image_to_video(image=keyframe_path, prompt=motion_prompt, duration=6, resolution_name="720p")`
@@ -77,7 +83,7 @@ Therefore:
 4. **Post-Clip Update:**
    - Update Continuity: `last_frame_recap` (precise description of final frame's action/expression/props/lighting/pose for next prompt).
    - **Audio Review & Safe Boost (mandatory, speed-safe version):** Use the video-lock extract + remux flow (see FFmpeg Helpers) to create *_corrected.mp4 with boost. Never use plain -c:v copy after -af on a clip destined for assembly (causes the "휘리릭" bug where mains speed up but titles/credits don't). Verify each corrected has identical nb_frames to its raw base. Deliver the corrected as primary.
-   - Advanced continuity (recommended): run `ffmpeg` via terminal to extract exact last frame as PNG for pixel-accurate next keyframe ref.
+   - Advanced continuity (recommended): run `ffmpeg` via `run_terminal_command` or `bash` to extract exact last frame as PNG for pixel-accurate next keyframe ref.
    - Update Bible shot_list with asset paths, momentum vector, emotional carry-over, and generated audio notes (raw vs balanced).
    - All involved agents output 7-metric self-eval + Director's Notes.
 5. **Full Sequence Delivery:**
@@ -85,7 +91,7 @@ Therefore:
    - Deliver playable final video + individual clips + Production Bible + audio spec.
    - **Audio Note**: Because this environment's primary audio comes from the video model's generative sound baked into image_to_video (guided by rich prompts), complex original music or precise foley often requires post-production. The skill provides full layered audio direction for that purpose.
 
-## FFmpeg Helpers (use via run_terminal_command when needed)
+## FFmpeg Helpers (use via `run_terminal_command` or `bash` when needed)
 - Extract last frame of a clip for continuity ref:  
   `ffprobe -v error -select_streams v:0 -count_packets -show_entries stream=nb_read_packets -of csv=p=0 clip.mp4` → then `ffmpeg -i clip.mp4 -vf "select=eq(n\,LAST-1)" -vframes 1 clip_end.png`
 - Final assembly (reliable timing, mandatory for complex productions with multiple iterations / any audio post-processing):  
@@ -100,7 +106,7 @@ Therefore:
 - **Mandatory Audio Balancing (after every clip — "효과음이 잘 들리지 않아" + "boosted 버전이 나은 듯" but "여전히 지직" + "휘리릭 speed bug" lessons applied):**  
   NEVER just `-af ... -c:v copy` on a clip and then feed to concat (causes audio dur skew → container lies → players speed/slow video = "휘리릭" or wrong total time).  
   **Correct safe flow (preserves exact video frames/PTS while adding boost):**  
-  ```powershell
+  ```bash
   ffmpeg -i raw_clip.mp4 -an -c copy video_only.mkv
   ffmpeg -i raw_clip.mp4 -vn -af "loudnorm=I=-16:TP=-1.5:LRA=11,volume=1.3,alimiter=limit=0.98" -c:a aac -b:a 128k -ar 48000 aud.m4a
   ffmpeg -i video_only.mkv -i aud.m4a -c:v copy -c:a copy -map 0:v -map 1:a -shortest -copyts -avoid_negative_ts make_zero clipXX_corrected.mp4

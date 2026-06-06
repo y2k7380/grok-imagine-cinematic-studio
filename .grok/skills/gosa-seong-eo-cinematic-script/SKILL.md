@@ -84,7 +84,7 @@ Target exact 2:00 runtime for YouTube dramas unless otherwise specified (title +
 - Every "이미지 생성 프롬프트" and "영상 생성 프롬프트" must be film-grade English, include full style lock, character DNA, consistency references, and the exact narration text + voiceover instructions when applicable.
 - All prompts must contain the full historical purity + anti-drift sentences listed in the Consistency Protocol above.
 - **Subtitles (Mandatory for Narration-Heavy Gosa):** Include in every video prompt: "with clean, elegant, highly legible on-screen Korean subtitles displaying the exact narration text at the bottom of the frame, white text with subtle black shadow/outline for maximum readability, timed to the slow deliberate delivery, minimal and not covering important visual elements or faces."
-- Text rules (mandatory): For any on-screen text (title, credits, or scene elements), specify "clean legible Korean + traditional Chinese characters for the idiom and hook/summary text. English only for meta production credits (Studio Director, Produced entirely with Grok Imagine tools + ffmpeg, etc.). No garbled, mixed, partial, decorative vertical, or broken text fragments."
+- Text rules (mandatory): For any on-screen text (title, credits, or scene elements), specify "clean legible Korean + traditional Chinese characters for the idiom and hook/summary text. No production branding, role lists, tool lists, or English meta production credits unless the user explicitly requests formal credits. No garbled, mixed, partial, decorative vertical, or broken text fragments."
 - After script approval, hand directly to `grok-imagine-cinematic-studio` for production (keyframes → 6s/10s video clips with baked audio → ffmpeg balancing → title + scenes + credits assembly).
 - Post-keyframe step (required): Visually audit all keyframes for East/West drift, clothing accuracy, and text cleanliness before generating video. Correct with image_edit when needed.
 
@@ -94,7 +94,7 @@ Target exact 2:00 runtime for YouTube dramas unless otherwise specified (title +
 - Narration + visuals + subtitles must work together so the origin is easy to follow and memorable – not abstract explanation, but a vivid "this is what happened" story.
 
 ## Integration
-The generated script (especially the per-scene prompts) is intended to be passed directly to the `grok-imagine-cinematic-studio` skill or the full 22-agent suite for keyframe generation, video animation, audio design, and final assembly.
+The generated script (especially the per-scene prompts) is intended to be passed directly to the `grok-imagine-cinematic-studio` skill for keyframe generation, video animation, audio design, and final assembly.
 
 ## Additional Resources
 - `references/output-format.md` — The mandatory exact output template (always load this when writing a script). It now includes dedicated Title Sequence and End Credits sections, plus strengthened text purity and historical setting boilerplate.

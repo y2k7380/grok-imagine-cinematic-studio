@@ -39,14 +39,14 @@ This is a persistent Linux sandbox environment (`/home/workdir/`) designed for a
 
 When working with or creating skills:
 
-1. **Always follow the official skill-creator guidelines** first — read `/root/.grok/skills/skill-creator/SKILL.md`.
+1. **Always follow the official skill-creator guidelines** first — read `/root/.grok/skills/skill-creator/SKILL.md`. If that path is unavailable in the current Grok Build runtime, use the workspace fallback at `/home/workdir/.grok/skills/skill-creator/SKILL.md`.
 2. Every skill **must** have a `SKILL.md` with strict YAML frontmatter:
    - `name`: kebab-case, matches directory name exactly
    - `description`: single-line plain text (no colons, no `<`/`>`, max 1024 chars) describing **when to use** this skill
 3. **Never** create `README.md`, `CHANGELOG.md`, or human-facing docs inside skill directories — skills are agent-only.
 4. Keep `SKILL.md` concise (< ~500 lines). Move detailed content, agent personalities, production bibles, and long references to `references/`.
 5. New skills **must** be created in `/home/workdir/.grok/skills/<name>/` using the init script from skill-creator.
-6. Validate after creation: `bash /root/.grok/skills/skill-creator/scripts/validate-skill.sh <skill-dir>`
+6. Validate after creation: `bash /root/.grok/skills/skill-creator/scripts/validate-skill.sh <skill-dir>` or, if using the workspace fallback, `bash /home/workdir/.grok/skills/skill-creator/scripts/validate-skill.sh <skill-dir>`
 
 ## Common Workflows & Commands
 
@@ -56,8 +56,11 @@ When working with or creating skills:
 - Explore: `bash ls -la`, `bash find`, `bash tree`
 
 ### Image & Media Tasks (Grok Imagine)
-- **Generate new images**: `generate_image` (detailed prompt + orientation)
-- **Edit existing / generated images**: `edit_image` (prompt + `file_path` or `image_id`)
+- **Generate new images**: `image_gen` (or `generate_image` if the runtime exposes only that alias)
+- **Edit existing / generated images**: `image_edit` (or `edit_image` if the runtime exposes only that alias)
+- **Animate approved keyframes**: `image_to_video`
+- **Animate from multiple references**: `reference_to_video`
+- **Shell / ffmpeg work**: `run_terminal_command` or `bash`, whichever the runtime exposes
 - **AI-powered recreation / style transfer / enhancement** of uploaded images: Activate `ai-image-recreation`
 - **Extract Character DNA** for consistency: Activate `character-dna-extractor`
 - **Extend cinematic sequences** (60–120s+): Activate `cinematic-sequence-extender` or `extend-frame-to-video`
