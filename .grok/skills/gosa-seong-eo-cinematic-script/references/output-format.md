@@ -19,12 +19,34 @@ You must follow this structure **exactly**. Do not add, remove, or reorder secti
 - 역할
 - 성격
 
+# 스토리 스파인 & 회수 장부
+- 로그라인
+- 핵심 주제
+- 중심 질문
+- 시작 상태
+- 갈등 고조
+- 클라이맥스
+- 해결
+- 마지막 감정 상태
+- 회수 장부: [초반 설정 / 상징 / 대사 / 소품 / 감정 약속 -> 회수되는 장면]
+- 결말 완결성 체크: 중심 질문이 어떻게 답해지는지
+
 # 장면 구성
 
 각 장면마다:
 
 장면 번호
 시간
+
+장면 기능:
+- 이 장면에서 바뀌는 이야기, 감정, 정보, 긴장, 해소, 또는 교훈
+
+이전 장면 연결:
+- 이전 end state
+- 다음 start state
+- 감정 carryover
+- visual motif carryover
+- sound bridge
 
 영상 설명:
 - 장소
@@ -58,11 +80,11 @@ You must follow this structure **exactly**. Do not add, remove, or reorder secti
 영상 생성 프롬프트
 (영문, 영화급)
 **Must include** (in addition to the above):
-- **Strong Pacing for Clarity (to prevent speeding/distortion):** "EXTREMELY SLOW, DELIBERATE, MEASURED, and UNHURRIED narration delivery with VERY LONG, generous pauses between every phrase and sentence. Deliver at a comfortable, relaxed educational pace (~100-120 words per minute). Do NOT rush, accelerate, compress, or speed up the voice at any point – especially not toward the end of the clip. Use the full duration for natural, clear delivery so every word is distinct."
+- **Strong Pacing for Clarity (to prevent speeding/distortion):** "EXTREMELY SLOW, DELIBERATE, MEASURED, and UNHURRIED narration delivery with VERY LONG, generous pauses between every phrase and sentence. Deliver at a comfortable, relaxed educational pace (~100-120 words per minute). Do NOT rush, accelerate, compress, or speed up the voice at any point – especially not toward the end of the clip. Use the full duration for natural, clear delivery so every word is distinct. (Grok Imagine 1.5 supports up to 15s clips — use the extra time for unhurried delivery rather than adding more text.)"
 - The full off-screen voiceover paragraph: "slow natural comfortable dramatic narration pace with clear pauses. This is off-screen professional Korean male narrator voiceover only. No character lip-sync, no on-screen mouth movement, no character appearing to speak or deliver the narration text. The voice is completely separate from any visuals or dialogue. Use the exact same calm professional Korean male narrator voice as in the title and credits clips of this production — identical timbre, pitch, accent, warmth, and delivery style across the entire video."
 - **Subtitles (Mandatory):** "with clean, elegant, highly legible on-screen Korean subtitles displaying the exact narration text at the bottom of the frame, white text with subtle black shadow/outline for maximum readability, timed to the slow deliberate delivery, minimal and not covering important visual elements."
 - The exact 나레이션 text for that scene.
-- Specific camera/motion description timed to the narration pace. For the final scene: ensure continuous subtle motion (slow drift, wind, breathing, etc.) throughout so there are no static or frozen moments.
+- Specific camera/motion description timed to the narration pace. For the final scene: ensure continuous subtle motion (slow drift, wind, breathing, etc.) throughout so there are no static or frozen moments. (With Grok Imagine 1.5, final clip can be up to 15s with rich continuous motion.) Clip durations may now be 8-15s thanks to Grok Imagine 1.5 support.
 - Pure East Asian setting + no-drift anchoring sentence.
 
 # 클라이맥스
@@ -95,3 +117,5 @@ You must follow this structure **exactly**. Do not add, remove, or reorder secti
 - **Keyframe Audit Step**: After generating any keyframe, visually inspect for clothing/environment drift and text quality before running image_to_video. Correct with image_edit if Western mixing or garbled text appears.
 - **Pre-Assembly QA for Audio & Story:** After balancing, make duration-tight clips. Global audio normalize the core. Check: no frozen sections, consistent slow clear narration speed (no progressive speeding), and that the idiom's specific historical origin is easy to follow and memorable with the help of subtitles. Re-work last scene or assembly if needed.
 - **Story Origin Focus for Gosa:** The 8 scenes must dramatize the exact historical event that gave birth to the idiom as a vivid, complete, emotionally engaging story. The "why" (the specific incident and its lesson) must be crystal clear so viewers learn and retain the origin. Make it interesting and self-contained like a short film, not a lecture explaining the saying.
+- **Story Spine & Payoff Ledger:** The output must include the Story Spine section and every scene must have a clear scene function. Any symbol, prop, line, or emotional promise introduced early must be paid off in a later scene or explicitly removed.
+- **Clip Transition Notes:** Every scene after the first must include previous end state, next start state, emotional carryover, visual motif carryover, and sound bridge so the cinematic studio can create handoff packets.

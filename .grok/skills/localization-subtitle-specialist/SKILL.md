@@ -14,7 +14,8 @@ Use `grok-imagine-cinematic-studio/references/agents/Localization_Subtitle_Speci
 1. Identify source language, target language, audience, and platform.
 2. Preserve meaning, timing, tone, and cultural context.
 3. Keep subtitles short, readable, and timed to narration.
-4. Coordinate with `ffmpeg` for subtitle burn-in or sidecar files.
+4. Check that on-screen text, title cards, end credits, and subtitles do not break visual harmony or cover key action/faces.
+5. Coordinate with `ffmpeg` for subtitle burn-in or sidecar files.
 
 ## Output
 - Language plan:
@@ -22,3 +23,5 @@ Use `grok-imagine-cinematic-studio/references/agents/Localization_Subtitle_Speci
 - Timing rules:
 - Translation notes:
 - Deliverables:
+- Title and credit text QA:
+- Rough-cut subtitle issues:

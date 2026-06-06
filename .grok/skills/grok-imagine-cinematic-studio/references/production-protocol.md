@@ -1,8 +1,13 @@
 # Video Production Protocol (Detailed)
 
+**Grok Imagine 1.5 Update (June 2026):** Individual `image_to_video` clips now support durations up to 15 seconds. This significantly improves options for slow, deliberate narration (especially in gosa-seong-eo and educational content) by allowing more text to be delivered naturally without compression or excessive splitting. Default recommendations have been adjusted throughout this document and related skills.
+
 This reference contains the full detailed rules, flows, and helpers that were previously in the main SKILL.md. The core SKILL.md now points here for depth while remaining lean.
 
 **This environment has real Imagine tools.** The studio no longer just writes prompts — it **produces actual video files** (.mp4) by calling tools.
+
+For story completeness, clip transitions, rough-cut review, recovery, and final
+delivery acceptance, also follow `cinematic-delivery-contract.md`.
 
 ## Tool Naming Contract
 - Preferred Grok Build tool names: `image_gen`, `image_edit`, `image_to_video`, `reference_to_video`, and `run_terminal_command`.
@@ -11,13 +16,15 @@ This reference contains the full detailed rules, flows, and helpers that were pr
 - If a runtime exposes `bash` instead of `run_terminal_command`, use `bash` for ffmpeg and file operations.
 
 ## MANDATORY RULES (all agents)
-- Follow Imagine Prompt Master and this protocol for every image/video call (reference-first for people, keyframe staging, short motion prompts, 6s preference, consistency via base reuse + end-frames, no pure text-to-video). If a global `imagine` skill exists in the runtime, load it as an additional source.
+- Follow Imagine Prompt Master and this protocol for every image/video call (reference-first for people, keyframe staging, short motion prompts, 6-15s range supported by Grok Imagine 1.5, with 10-15s preferred for narration-dense or complex cinematic shots, consistency via base reuse + end-frames, no pure text-to-video). If a global `imagine` skill exists in the runtime, load it as an additional source.
 - When generating, the video rules in this protocol are the law for shot planning and prompt craft.
 - **Keyframe-first**: Never call `image_to_video` or `reference_to_video` without a prior approved keyframe image from `image_gen`/`image_edit`.
 - QA Guardian issues Go/No-Go before every keyframe AND before every video animation.
 - Use locked [VARIABLES], character DNA, and continuity recaps verbatim in all prompts.
 - Record every generated asset path in Project Bible + studio state under `artifacts/<project>/` (e.g. `artifacts/<project>/clips/clip_01.mp4`, `artifacts/<project>/clips/clip_01_keyframe.png`).
 - **Keyframe Image Saving Rule**: After every keyframe generation (`image_gen`/`generate_image` or `image_edit`/`edit_image`), save a copy of the keyframe image to the project's `clips/` directory in addition to `refs/`. This makes stills easily accessible alongside the video clips for editing, review, or re-use.
+- **Delivery Contract Required**: For multi-clip work, create/update the required state files from `cinematic-delivery-contract.md`: Project Bible, clip registry, handoff packets, QA reports, rough-cut report, and final delivery manifest.
+- **Story and Style Lock First**: No keyframe generation begins until the Story Spine, Promise/Payoff Ledger, Visual Style Bible, Grade Bible, Character DNA, World/Prop Bible, and Audio Bible are locked or explicitly marked not applicable.
 
 ## AUDIO LANGUAGE LOCK PROTOCOL (Critical for mixed-language projects)
 - AI video tools often bake in unwanted vocals/singing that default to English, Japanese, or multilingual mix even when the prompt is in English.
@@ -33,7 +40,7 @@ This reference contains the full detailed rules, flows, and helpers that were pr
 ## Narration Pacing Control (Critical for Educational Lectures & Long-form Content)
 - Short-form (shorts/reels) bias in the model often produces unnaturally fast narration. For lecture, course, or educational content, ALWAYS override this.
 - In every narration motion prompt, explicitly include: "slow, natural, comfortable educational lecture narration pace. Deliver at relaxed speaking speed (~120-140 words per minute) with clear natural pauses, breathing, and sentence separation. Do NOT rush, accelerate, or compress the speech to fit the clip duration — use calm, articulate, unhurried delivery even if it results in a measured, professional pace with slight pauses."
-- Prefer 10-second duration for narration-dense clips. Split dense scripts across multiple clips if needed rather than forcing fast delivery.
+- With Grok Imagine 1.5 supporting up to 15 seconds per clip, prefer 10-15 second duration for narration-dense clips (use 15s when it allows the full slow narration text to be delivered naturally without rushing). Split only if the narration is extremely dense or the emotional beat requires a cut. 6-8s remains good for high-energy or simple action shots.
 - In the Production Bible, mark narration-heavy sections and note target pace.
 
 ## Narration (Voiceover) vs Character Dialogue/Performance Separation
@@ -70,6 +77,7 @@ Therefore:
 1. **Plan & Craft (DoP + Imagine Prompt Master + Performance + Continuity + Sonic Architect):**
    - Detailed `keyframe_prompt` using Ultimate Template + quality stack + all refs + locked vars (for beautiful frame 1).
    - **Sound Design Pass** (Sonic Architect): Create detailed "embedded audio description" — specific SFX, ambient layers, music cues, spatial audio notes that match the action and emotion.
+   - **Transition Contract Pass** (Sequence Director + Continuity): For clip 02 onward, load `handoff_packets/clip_XX_to_YY.md` and copy the incoming start-frame target, screen direction, camera velocity, lighting/color carryover, emotional handoff, audio tail, and cut type into planning.
    - Short `motion_prompt` (1-2 sentences, present tense): subject + action + exact `[CAMERA_MOVE]` from DoP + lighting/mood **+ rich sound design description from Sonic**. 
      Example: "Slow anamorphic push-in on the rain-soaked detective as he lights a cigarette, subtle eye shift to camera, neon reflections, god rays through blinds, with layered sound design: distant thunder rumble, wet footsteps on pavement, subtle melancholic string drone swelling, wind gusts."
 2. **Produce Keyframe:**
@@ -77,19 +85,36 @@ Therefore:
    - `image_gen(prompt=keyframe_prompt, aspect_ratio="16:9")` for new or `image_edit(prompt=..., image=base_path)` for continuity. Use `generate_image` / `edit_image` aliases only when those are the tool names exposed by the runtime.
    - May loop edits 1-2x based on visual QA.
 3. **Animate to Video (only on GO):**
-   - `image_to_video(image=keyframe_path, prompt=motion_prompt, duration=6, resolution_name="720p")`
+   - `image_to_video(image=keyframe_path, prompt=motion_prompt, duration=8 to 15, resolution_name="720p")`  (Grok Imagine 1.5 supports up to 15s; choose based on narration density and motion complexity — longer clips reduce cuts and improve flow for slow educational/cinematic content)
      (The detailed sound description in the prompt guides the model's native audio synthesis for SFX, ambient, and musical elements.)
    - Use `reference_to_video` (with 2+ refs + prompt) only for complex multi-element shots; prefer compositing refs into one keyframe first.
 4. **Post-Clip Update:**
    - Update Continuity: `last_frame_recap` (precise description of final frame's action/expression/props/lighting/pose for next prompt).
    - **Audio Review & Safe Boost (mandatory, speed-safe version):** Use the video-lock extract + remux flow (see FFmpeg Helpers) to create *_corrected.mp4 with boost. Never use plain -c:v copy after -af on a clip destined for assembly (causes the "휘리릭" bug where mains speed up but titles/credits don't). Verify each corrected has identical nb_frames to its raw base. Deliver the corrected as primary.
    - Advanced continuity (recommended): run `ffmpeg` via `run_terminal_command` or `bash` to extract exact last frame as PNG for pixel-accurate next keyframe ref.
-   - Update Bible shot_list with asset paths, momentum vector, emotional carry-over, and generated audio notes (raw vs balanced).
+   - Update Bible shot_list and `clip_registry.csv` with asset paths, momentum vector, emotional carry-over, generated audio notes (raw vs balanced), QA status, and final-frame path.
+   - If another clip follows, create or update the next Clip Transition Contract before the next keyframe is generated.
    - All involved agents output 7-metric self-eval + Director's Notes.
 5. **Full Sequence Delivery:**
-   - After clips: build concat list, `ffmpeg -f concat -safe 0 -i list.txt -c copy final_cinematic.mp4`
-   - Deliver playable final video + individual clips + Production Bible + audio spec.
+   - After clips: build concat list and assemble a rough cut with frame-safe ffmpeg settings.
+   - Run Rough Cut Review from `cinematic-delivery-contract.md` before final delivery. Fix or explicitly waive abrupt transitions, story gaps, visual drift, audio level jumps, title/credit issues, and ending closure problems.
+   - Build the final master only after rough-cut Go. Run ffprobe verification for frame count, duration, frame rate, and audio streams.
+   - Deliver playable final video + individual clips + Production Bible + audio spec + clip registry + QA reports + final delivery manifest.
    - **Audio Note**: Because this environment's primary audio comes from the video model's generative sound baked into image_to_video (guided by rich prompts), complex original music or precise foley often requires post-production. The skill provides full layered audio direction for that purpose.
+
+## Generation Recovery Protocol
+When a keyframe, clip, transition, or assembled sequence fails, do not blindly
+retry. First classify the failure as identity drift, motion artifact, continuity
+break, story function failure, color/style drift, audio language/voice/sync/SFX
+failure, text/subtitle/title error, or playback/duration/frame-count failure.
+
+Then choose one targeted action:
+- `image_edit` the keyframe when the composition is close but details drift.
+- Regenerate the keyframe when identity, story, or staging is fundamentally wrong.
+- Rerun `image_to_video` when the keyframe is strong but motion or native audio fails.
+- Insert a bridge, reaction, or B-roll shot when adjacent clips cut abruptly.
+- Strip audio and deliver silent visual plus post audio spec if native audio fails repeatedly.
+- Update negative prompts, locked variables, handoff packets, QA notes, and the clip registry before retrying.
 
 ## FFmpeg Helpers (use via `run_terminal_command` or `bash` when needed)
 - Extract last frame of a clip for continuity ref:  

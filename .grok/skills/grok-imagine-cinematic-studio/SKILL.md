@@ -52,14 +52,14 @@ The authoritative Role Cards for all agents are maintained in `references/agents
 **Specialist (Opt-in)**
 - ErosForge NSFW Director v3.5
 
-**Note on Video Production (Grok Build TUI supplement):** This suite supports actual video asset production using the environment's Imagine tools (`image_gen`, `image_edit`, `image_to_video`, `reference_to_video`) plus ffmpeg for continuity and assembly. If the runtime exposes `generate_image` or `edit_image` instead, treat those as aliases for `image_gen` and `image_edit`. Sound design (SFX, ambient, music) is achieved by having the Sonic Architect provide detailed "embedded sound descriptions" that are injected into every motion prompt for the video tool's generative audio. See `references/production-protocol.md` for the full mandatory rules, per-shot flow, and audio post-processing requirements.
+**Note on Video Production (Grok Build TUI supplement):** This suite supports actual video asset production using the environment's Imagine tools (`image_gen`, `image_edit`, `image_to_video`, `reference_to_video`) plus ffmpeg for continuity and assembly. If the runtime exposes `generate_image` or `edit_image` instead, treat those as aliases for `image_gen` and `image_edit`. Sound design (SFX, ambient, music) is achieved by having the Sonic Architect provide detailed "embedded sound descriptions" that are injected into every motion prompt for the video tool's generative audio. See `references/production-protocol.md` for the mandatory tool flow and `references/cinematic-delivery-contract.md` for story, continuity, transition, QA, rough-cut, and final-master gates.
 
 ## How to Use This Studio
 
 - Say **"Activate Grok Imagine Cinematic Studio v3.5"** or **"Start cinematic production"** to begin the full collaborative workflow.
 - The system will automatically engage **Studio Director** + **Mega Production Architect** as primary orchestrators.
 - You can activate specific agents directly at any time (e.g. "Activate only DoP, Identity Lock, and QA Guardian").
-- All agents share a living **Project Bible** and maintain consistent studio state.
+- All agents share a living **Project Bible** and maintain consistent studio state using the required files in `references/cinematic-delivery-contract.md`.
 
 **Specialist Activation Commands** (use anytime):
 - `ACTIVATE KEY_ART_DESIGNER` — Key Art / Posters / Marketing visuals
@@ -72,6 +72,7 @@ The authoritative Role Cards for all agents are maintained in `references/agents
 ## Core Capabilities (v3.5)
 
 - Full Project Bible with locked [VARIABLE] system
+- Story Spine, Promise/Payoff Ledger, Visual Style Bible, Audio Bible, and Final Delivery Manifest
 - Native Extend-from-Frame + long-form cinematic sequencing (60–120s+)
 - Dynamic Agent Activation + Real-Time Studio State
 - 16-point QA Guardian with Emotional Resonance scoring
@@ -96,14 +97,15 @@ The authoritative Role Cards for all agents are maintained in `references/agents
 High-level summary (all agents must follow):
 - This environment supports real video production via the Imagine tools (`image_gen`, `image_edit`, `image_to_video`, `reference_to_video`) plus `run_terminal_command` or `bash` for ffmpeg.
 - **Keyframe-first + QA before every step**: No `image_to_video` without a prior approved keyframe. QA Guardian Go/No-Go before keyframe and before animation.
-- Follow Imagine Prompt Master plus this production protocol for reference-first generation, consistency via bases/end-frames, and short motion prompts. If a global `imagine` skill is available in the runtime, load it as an additional source.
+- **Delivery Contract gates**: Story Lock, Style/Continuity Lock, Clip Transition Contract, Stage QA Thresholds, Rough Cut Review, Recovery Protocol, and Final Delivery Manifest are mandatory for multi-clip work.
+- Follow Imagine Prompt Master plus this production protocol for reference-first generation, consistency via bases/end-frames, and motion prompts (now supporting 8-15s clips with Grok Imagine 1.5). If a global `imagine` skill is available in the runtime, load it as an additional source.
 - Use locked [VARIABLES], character DNA, and continuity recaps verbatim.
 - Sound design (SFX, ambient, music) is achieved by embedding rich descriptions from Sonic Architect into every motion prompt (SFX volume priority is critical).
 - **Mandatory safe audio post-processing after every clip** (never feed AF-stretched clips directly into concat — this is the source of "휘리릭" speed bugs). Use the video-only + processed audio + remux-with-copyts flow documented in the reference.
 - Verify exact `nb_frames` and stream duration match between raw and balanced versions.
 - Titles & Credits: Follow the concise guideline defined earlier in this file (no branding line in titles; summary-only credits).
 
-All detailed protocols (Audio Language Lock, Narration Pacing & Voice Separation, Voice Consistency, Per-Shot Flow, FFmpeg Helpers, Mandatory Balancing, etc.) live in `references/production-protocol.md`. Consult it before any real asset generation or assembly.
+All detailed protocols (Audio Language Lock, Narration Pacing & Voice Separation, Voice Consistency, Per-Shot Flow, FFmpeg Helpers, Mandatory Balancing, etc.) live in `references/production-protocol.md`. The completion and quality gates live in `references/cinematic-delivery-contract.md`. Consult both before any real asset generation or assembly.
 
 ## Quick Commands
 
@@ -122,4 +124,4 @@ This skill gives you access to the complete custom cinematic production system. 
 
 ---
 
-**Version note**: This skill and its agent definitions have been updated with lessons from real productions (e.g. East/West drift fixes, audio speed/distortion issues, title/credits concise rule, production-protocol extraction for lean SKILL.md). See individual agent changelogs and `references/production-protocol.md` for details. Last major structural update: 2026-06.
+**Version note**: This skill and its agent definitions have been updated with lessons from real productions (e.g. East/West drift fixes, audio speed/distortion issues, title/credits concise rule, production-protocol extraction for lean SKILL.md). Grok Imagine 1.5 support (up to 15s clips) incorporated into production-protocol.md and all related skills/agents (June 2026). See individual agent changelogs and `references/production-protocol.md` for details. Last major structural update: 2026-06.

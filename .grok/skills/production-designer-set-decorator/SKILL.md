@@ -13,8 +13,9 @@ Use `grok-imagine-cinematic-studio/references/agents/Production_Designer_Set_Dec
 ## Workflow
 1. Define environment DNA, prop anchors, materials, weather, era, and cultural details.
 2. Separate locked environment details from scene-specific changes.
-3. Hand concise environment language to `imagine-prompt-master`.
-4. Coordinate with `continuity-consistency-guardian` for repeated locations.
+3. Maintain the World/Prop Bible: geography, time of day, weather, set dressing, prop states, wardrobe states, material rules, and forbidden drift.
+4. Hand concise environment language to `imagine-prompt-master`.
+5. Coordinate with `continuity-consistency-guardian` for repeated locations and clip handoff packets.
 
 ## Output
 - Environment DNA:
@@ -22,3 +23,5 @@ Use `grok-imagine-cinematic-studio/references/agents/Production_Designer_Set_Dec
 - Set dressing:
 - Era and culture locks:
 - Negative drift rules:
+- World/Prop Bible updates:
+- Continuity handoff notes:
