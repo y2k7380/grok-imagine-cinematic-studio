@@ -155,7 +155,14 @@ Thumbs.db
 # CLI generated state (uncomment if you want to ignore local project memory)
 # .cinematic_project_state.json
 
-# Generated production files (optional - comment out if you want to commit examples)
+# Generated cinematic artifacts & production outputs
+# All video clips, final masters, keyframes, project bibles, etc. are written to artifacts/
+# per AGENTS.md. These are large binary files and must stay out of git history.
+artifacts/
+
+# (Rarely) uncomment the lines below only if you intentionally want to commit
+# small example outputs or specific production files for the repo.
+# !artifacts/.gitkeep
 # production_bible.json
 # *.pdf
 
