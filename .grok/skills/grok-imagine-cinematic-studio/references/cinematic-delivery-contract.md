@@ -93,6 +93,8 @@ delivery. The report must cover:
 
 No final delivery is allowed until the rough cut report is passed or addressed.
 
+**SCRIPT-TO-FINAL ATOMIC RULE**: When the user supplies a full scenario or "make the drama", all gates (Story Lock, Style/Continuity Lock, every Clip Transition Contract, Normalization, Rough Cut Review, Final Master QA + ffprobe, Manifest) are non-waivable and must be executed in one continuous flow by the Studio Director + Mega Production Architect. Partial outputs or "we have some clips" are forbidden. The session only concludes with the playable master + manifest in the designated final/ location.
+
 ## Recovery Protocol
 When a generation fails, classify the failure first:
 
