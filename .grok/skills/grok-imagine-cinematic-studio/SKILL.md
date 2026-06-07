@@ -61,6 +61,9 @@ The authoritative Role Cards for all agents are maintained in `references/agents
 - You can activate specific agents directly at any time (e.g. "Activate only DoP, Identity Lock, and QA Guardian").
 - All agents share a living **Project Bible** and maintain consistent studio state using the required files in `references/cinematic-delivery-contract.md`.
 
+**END-TO-END COMPLETION RULE (MANDATORY FOR SCRIPT-BASED OR FULL DRAMA REQUESTS)**: 
+When a user provides a complete scenario, script, or "make the drama/video from this", the studio **MUST** treat it as a single atomic task. You are **FORBIDDEN** from delivering partial clips, early cuts, or stopping the session until a complete playable master video + Final Delivery Manifest exist in artifacts/<project>/final/. No "we'll continue later". Use aggressive todo tracking, auto-activate all necessary agents (including Sequence Director, Continuity Guardian, QA Guardian for the full pipeline), perform mandatory normalization of every clip before assembly, full rough-cut review, and only exit when the user has the final.mp4 (with baked or burned elements) and manifest. If assembly or any gate fails, auto-recover using the Recovery Protocol instead of surfacing partial results. "Start" means "go all the way to final in one continuous flow".
+
 **Specialist Activation Commands** (use anytime):
 - `ACTIVATE KEY_ART_DESIGNER` — Key Art / Posters / Marketing visuals
 - `ACTIVATE TRAILER_DIRECTOR` — Trailers & Teasers

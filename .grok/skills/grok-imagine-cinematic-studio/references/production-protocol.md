@@ -95,12 +95,16 @@ Therefore:
    - Update Bible shot_list and `clip_registry.csv` with asset paths, momentum vector, emotional carry-over, generated audio notes (raw vs balanced), QA status, and final-frame path.
    - If another clip follows, create or update the next Clip Transition Contract before the next keyframe is generated.
    - All involved agents output 7-metric self-eval + Director's Notes.
-5. **Full Sequence Delivery:**
-   - After clips: build concat list and assemble a rough cut with frame-safe ffmpeg settings.
-   - Run Rough Cut Review from `cinematic-delivery-contract.md` before final delivery. Fix or explicitly waive abrupt transitions, story gaps, visual drift, audio level jumps, title/credit issues, and ending closure problems.
-   - Build the final master only after rough-cut Go. Run ffprobe verification for frame count, duration, frame rate, and audio streams.
-   - Deliver playable final video + individual clips + Production Bible + audio spec + clip registry + QA reports + final delivery manifest.
-   - **Audio Note**: Because this environment's primary audio comes from the video model's generative sound baked into image_to_video (guided by rich prompts), complex original music or precise foley often requires post-production. The skill provides full layered audio direction for that purpose.
+5. **Full Sequence Delivery (END-TO-END MANDATORY - script-driven productions):**
+   - **Normalization Gate (strict, non-bypassable)**: Before ANY concat/assembly, create norm/ dir. Run this exact pass on every balanced clip:
+     `ffmpeg -i clip_balanced.mp4 -map 0:v:0 -map 0:a:0 -vf "scale=1280:720,setsar=1" -c:v libx264 -preset medium -crf 18 -r 24 -pix_fmt yuv420p -c:a aac -b:a 128k -ar 48000 -bsf:v h264_mp4toannexb norm/clipXX_norm.mp4`
+     This directly fixes the errors seen in this production (title 1264x720 drift, attached mjpeg thumbnails, SAR/parameter mismatches that caused "parameters do not match", "missing picture in access unit", h264 annexb failures, and short/partial concat results).
+   - Derive the concat list **only** from shot_list.md + updated clip_registry.csv (story order). Never ls|sort or alpha. Put full relative paths if using subdirs.
+   - Prefer the documented filter_complex method (or demuxer only after all clips are provably identical post-normalization). Always produce the delivered master with re-encode (crf 18 etc.), never trust -c copy for the user-facing file.
+   - **Mandatory verification after every assembly attempt**: ffprobe master, compare total nb_frames + duration vs sum of the norm clips used. Mismatch = failure. Classify (see Recovery) and fix before proceeding. Wrong frame count = "휘리릭" or truncated story in practice.
+   - Only after verification + Rough Cut Review (per cinematic-delivery-contract.md) may you burn/mux subtitles, titles, credits and write the Final Delivery Manifest.
+   - For any "드라마 만들어 / make the full video from this script" request: the whole thing (Bible/shotlist/DNA → all clips → norm → assemble → verify → manifest + master) is **one atomic operation**. You must not surface clips, temps, or "we'll continue" — only the final in artifacts/.../final/ when done.
+   - **Audio Note**: ... (generative baked audio limitation acknowledged; strengthen "prominent loud clear" + identical voice descriptor in every motion prompt; offer audio strip + spec if variance is too high for the project).
 
 ## Generation Recovery Protocol
 When a keyframe, clip, transition, or assembled sequence fails, do not blindly
